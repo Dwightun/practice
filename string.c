@@ -2,57 +2,68 @@
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#include <cerrno>  
 
 #define N 1000
-void Split(char* string, char* delimiter, char*** tokens, int* tokensCount);
+
+void Split(char* string, char* delimiter, char** tokens, int* tokensCount);
 
 int main() {
+	errno = 0;
 	char* string;
 	char* delimiter;
 	char** tokens;
-	int tokensCount;
+	int tokensCount = 0;
 	string = (char*)malloc(sizeof(char)*N);
 	delimiter = (char*)malloc(sizeof(char)*N);
 	scanf("%s %s",string,delimiter);
-//	Split(string,delimiter,&tokens,&tokensCount);
+	tokens = (char**)malloc(sizeof(char*)*100);
 	for (int i = 0; i < strlen(string); i++)
 	{
-		printf("kf\n");
-		tokens = (char**)malloc(sizeof(char*)*100);
-		printf("i m gay3\n");
+		tokens[i] = (char*)malloc(sizeof(char)*strlen(string));
 	}
-	Split(string,delimiter,&tokens,&tokensCount);
-	printf("ferum\n");
+	//string = NULL;
+	Split(string,delimiter,tokens,&tokensCount);
 	for (int i = 0; i < tokensCount; i++)
 	{
-		printf("%s \n", tokens[i]);
+		printf("%d = %s\n", i, tokens[i]);
+		free(tokens[i]);
 	}
-	printf("%d", tokensCount);
-	//system("pause");
+	if (errno == 0) {
+		printf("%d \n", tokensCount);
+	}
+	printf("%s \n\n", errno);
+	system("pause");
+	free(string);
+	free(*tokens);
+	free(delimiter);
 	return 0;
 }
 
-void Split(char* string, char* delimiter, char*** tokens, int* tokensCount) {
-	int j=0;
-	char* string_word;
-	string_word = (char*)malloc(sizeof(char)*N);
-	printf("i m gay4\n");
-	for (int i = 0; i < strlen(string); i++)
+void Split(char* string, char* delimiter, char** tokens, int* tokensCount) {
+	if (string==NULL || delimiter==NULL || tokens==NULL || tokensCount==NULL)
 	{
-		printf("kick me\n");
-		if (strstr(string, delimiter) == NULL)
-			break;
-		else
-		{
-			string_word = strstr(string, delimiter);
-			printf("ku\n");
-			memcpy(tokens[j], string, strlen(string) - strlen(string_word));
-			printf("he\n");
-			j++;
-			string = string_word+strlen(delimiter);
-			printf("fuck you asshole\n");
-		}
+		errno = "EINVAL";
 	}
-	*tokensCount = j;
-	printf("fit\n");
+	else {
+		int j = 0;
+		char* string_word;
+		string_word = (char*)malloc(sizeof(char)*N);
+		strcat(string, delimiter);
+		for (int i = 0; i < strlen(string); i++)
+		{
+			if (strstr(string, delimiter) == NULL)
+				break;
+			else
+			{
+				string_word = strstr(string, delimiter);
+				strncpy(tokens[j], string, strlen(string) - strlen(string_word));
+				tokens[j][strlen(string) - strlen(string_word)] = '\0';
+				string = string_word + strlen(delimiter);
+				if (tokens[j][0] != 0)
+					j++;
+			}
+		}
+		*tokensCount = j;
+	}
 }
