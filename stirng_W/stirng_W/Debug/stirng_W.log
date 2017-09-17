@@ -1,0 +1,21 @@
+﻿  main_arg.c
+c:\users\roma\documents\github\practice\main_arg.c(26): warning C4133: =: несовместимые типы - из "char *" в "FILE *"
+c:\users\roma\documents\github\practice\main_arg.c(31): warning C4047: функция: "const char *const " отличается по уровням косвенного обращения от "char **"
+c:\users\roma\documents\github\practice\main_arg.c(31): warning C4024: fscanf: различные типы для формального и фактического параметров 2
+c:\users\roma\documents\github\practice\main_arg.c(34): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "char **"
+c:\users\roma\documents\github\practice\main_arg.c(34): warning C4024: Split: различные типы для формального и фактического параметров 1
+c:\users\roma\documents\github\practice\main_arg.c(36): warning C4013: execv: нет определения; предполагается "extern" с возвратом типа "int"
+c:\users\roma\documents\github\practice\main_arg.c(20): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note:  см. объявление "fopen"
+c:\users\roma\documents\github\practice\main_arg.c(31): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(1195): note:  см. объявление "fscanf"
+c:\users\roma\documents\github\practice\main_arg.c(38): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note:  см. объявление "fopen"
+c:\users\roma\documents\github\practice\main_arg.c(48): warning C4047: =: "int" отличается по уровням косвенного обращения от "char [7]"
+c:\users\roma\documents\github\practice\main_arg.c(55): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\roma\documents\github\practice\main_arg.c(54): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(93): note:  см. объявление "strcat"
+c:\users\roma\documents\github\practice\main_arg.c(62): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(343): note:  см. объявление "strncpy"
+  stirng_W.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\stirng_W\Debug\stirng_W.exe
+  stirng_W.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\stirng_W\Debug\stirng_W.pdb (Partial PDB)
