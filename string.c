@@ -34,7 +34,6 @@ int main() {
 		printf("%d \n", tokensCount);
 	}
 	printf("%s \n\n", errno);
-	system("pause");
 	free(string);
 	free(*tokens);
 	free(delimiter);

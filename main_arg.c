@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#include <cerrno>  
 //#include <unistd.h>
 
 #define N 1000
@@ -9,6 +10,7 @@
 void Split(char* string, char* delimiter, char** tokens, int* tokensCount);
 
 int main(){
+	errno = 0;
 	char *text_of_comand_list;
 	int i = 0;
 	char **string_of_commands;
@@ -23,17 +25,17 @@ int main(){
 		exit(1);
 	}
 	else {
-		comand_list = (char*)malloc(sizeof(char*)*N);
 		text_of_comand_list = (char*)malloc(sizeof(char*)*N);
 		string_of_commands = (char**)malloc(sizeof(char*)*N);
 		words_of_commands = (char**)malloc(sizeof(char)*N);
 		//malloc 4x
-		fscanf(comand_list, &text_of_comand_list);
-		Split(text_of_comand_list, &string_delimiter, string_of_commands, &count_of_commands);
-		for (int i = 0; i < count_of_commands; i++) {
-			Split(&string_of_commands[i], &word_delimiter, words_of_commands, count_of_word_of_string_of_commands);
+		while(comand_list != 'EOF') {
+			fscanf(comand_list, "\n", &text_of_comand_list[i]);
+			//printf("%s\n", text_of_comand_list[i]);
+			Split(string_of_commands[i], &word_delimiter, words_of_commands, count_of_word_of_string_of_commands);
+			i++;
 		}
-		execv(words_of_commands[0], &words_of_commands, (char*)NULL);
+		execv(words_of_commands[0], words_of_commands, (char*)NULL);
 	}
 	FILE *f = fopen("output.txt", "w");
 	fprintf(f, "jopa");
@@ -43,7 +45,7 @@ int main(){
 }
 
 void Split(char* string, char* delimiter, char** tokens, int* tokensCount) {
-	if (string == NULL || delimiter == NULL || tokens == NULL || tokensCount == NULL)
+	if (string == NULL || delimiter == NULL || tokens == NULL)
 	{
 		errno = "EINVAL";
 	}
