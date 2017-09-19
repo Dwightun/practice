@@ -15,10 +15,18 @@ int main() {
 	char* delimiter;
 	char** tokens;
 	int tokensCount = 0;
+<<<<<<< HEAD
 	int j = 0;
 	char c;
 	string = (char*)malloc(sizeof(char)*N);
 	delimiter = (char*)malloc(sizeof(char)*N);
+=======
+	// fixit: пробелы вокруг бинарных операторов и после запятых
+	string = (char*)malloc(sizeof(char)*N);
+	delimiter = (char*)malloc(sizeof(char)*N);
+	scanf("%s %s",string,delimiter);
+	// fixit: 100 - magic number ... нужно именованная константа
+>>>>>>> 166548c457bc4bad5f55344efb82dc8e30c90679
 	tokens = (char**)malloc(sizeof(char*)*100);
 	while ((c = getchar()) != '\n'){
 		string[j] = c;
@@ -56,24 +64,35 @@ int main() {
 void Split(char* string, char* delimiter, char** tokens, int* tokensCount) {
 	if (string==NULL || delimiter==NULL || tokens==NULL || tokensCount==NULL)
 	{
+		// fixit: errno - это int'овая переменная, а вы ей нечто неожиданное присваиваете
+		// по-моему обнулить tokensCount и выйти вроде бы достаточно будет
 		errno = "EINVAL";
 	}
 	else {
+		// fixit: придумайте более "говорящее" имя для j
 		int j = 0;
 		char* string_word;
 		string_word = (char*)malloc(sizeof(char)*N);
 		strcat(string, delimiter);
 		for (int i = 0; i < strlen(string) + 1; i++)
 		{
+			// fixit: вы дважны зачем-то strstr вызываете 
 			if (strstr(string, delimiter) == NULL)
 				break;
 			else
 			{
+				// string_word - gnu code style ... обычно, если tokensCount, то и stringWord ...
 				string_word = strstr(string, delimiter);
 				strncpy(tokens[j], string, strlen(string) - strlen(string_word));
 				tokens[j][strlen(string) - strlen(string_word)] = '\0';
 				string = string_word + strlen(delimiter);
+<<<<<<< HEAD
 				if (tokens[j][0] != '\0')
+=======
+				
+				// мне кажется, если написать strlen(tokens[j]) > 0 ... намерения будут яснее
+				if (tokens[j][0] != 0)
+>>>>>>> 166548c457bc4bad5f55344efb82dc8e30c90679
 					j++;
 			}
 		}
