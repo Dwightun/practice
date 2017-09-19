@@ -45,19 +45,22 @@ void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 		char* str_out;
 		int token_counter = 0;
 		char* string_word;
+		char* string_copy;
+		string_copy = (char*)malloc(sizeof(char)*N);
 		string_word = (char*)malloc(sizeof(char)*N);
-		strcat(string, delimiter);
-		for (int iterator = 0; iterator < (int)strlen(string); iterator++)
+		string_copy = string;
+		strcat(string_copy, delimiter);
+		for (int iterator = 0; iterator < (int)strlen(string_copy); iterator++)
 		{
-			str_out = strstr(string, delimiter);
+			str_out = strstr(string_copy, delimiter);
 			if (str_out == NULL)
 				break;
 			else
 			{
 				string_word = str_out;
-				strncpy(tokens[token_counter], string, strlen(string) - strlen(string_word));
-				tokens[token_counter][strlen(string) - strlen(string_word)] = '\0';
-				string = string_word + strlen(delimiter);
+				strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
+				tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
+				string_copy = string_word + strlen(delimiter);
 				if (strlen(tokens[token_counter]) > 0)
 					token_counter++;
 			}
