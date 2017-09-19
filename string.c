@@ -15,10 +15,22 @@ int main() {
 	char* delimiter;
 	char** tokens;
 	int tokensCount = 0;
+	int j = 0;
+	char c;
 	string = (char*)malloc(sizeof(char)*N);
 	delimiter = (char*)malloc(sizeof(char)*N);
-	scanf("%s %s",string,delimiter);
 	tokens = (char**)malloc(sizeof(char*)*100);
+	while ((c = getchar()) != '\n'){
+		string[j] = c;
+		j++;
+	}
+	string[j++] = '\0';
+	j = 0;
+	while ((c = getchar()) != '\n') {
+		delimiter[j] = c;
+		j++;
+	}
+	delimiter[j++] = '\0';
 	for (int i = 0; i < strlen(string); i++)
 	{
 		tokens[i] = (char*)malloc(sizeof(char)*strlen(string));
@@ -35,8 +47,9 @@ int main() {
 	}
 	printf("%s \n\n", errno);
 	free(string);
-	free(*tokens);
+	//free(*tokens);
 	free(delimiter);
+	system("pause");
 	return 0;
 }
 
@@ -50,7 +63,7 @@ void Split(char* string, char* delimiter, char** tokens, int* tokensCount) {
 		char* string_word;
 		string_word = (char*)malloc(sizeof(char)*N);
 		strcat(string, delimiter);
-		for (int i = 0; i < strlen(string); i++)
+		for (int i = 0; i < strlen(string) + 1; i++)
 		{
 			if (strstr(string, delimiter) == NULL)
 				break;
@@ -60,7 +73,7 @@ void Split(char* string, char* delimiter, char** tokens, int* tokensCount) {
 				strncpy(tokens[j], string, strlen(string) - strlen(string_word));
 				tokens[j][strlen(string) - strlen(string_word)] = '\0';
 				string = string_word + strlen(delimiter);
-				if (tokens[j][0] != 0)
+				if (tokens[j][0] != '\0')
 					j++;
 			}
 		}
