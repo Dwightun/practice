@@ -1,0 +1,13 @@
+﻿  main_arg.c
+c:\users\roma\documents\github\practice\main_arg.c(23): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(93): note:  см. объявление "strcat"
+c:\users\roma\documents\github\practice\main_arg.c(31): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\roma\documents\github\practice\main_arg.c(32): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\string.h(343): note:  см. объявление "strncpy"
+c:\users\roma\documents\github\practice\main_arg.c(63): warning C4133: функция: несовместимые типы - из "tm *" в "time_t *const "
+c:\users\roma\documents\github\practice\main_arg.c(99): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\roma\documents\github\practice\main_arg.c(128): warning C4013: time_coverter: нет определения; предполагается "extern" с возвратом типа "int"
+c:\users\roma\documents\github\practice\main_arg.c(82): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note:  см. объявление "fopen"
+c:\users\roma\documents\github\practice\main_arg.c(133): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdio.h(207): note:  см. объявление "fopen"

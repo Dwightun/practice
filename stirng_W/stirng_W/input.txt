@@ -1,7 +1,4 @@
-asdasd
-as
-d
-asd
-a
-sd
-asd
+09/21/2017/21/35/59 ls -l
+echo echo
+cd .
+123 123 123
