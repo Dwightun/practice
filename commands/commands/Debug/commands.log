@@ -1,9 +1,9 @@
 ﻿  main_arg.c
-c:\users\roma\documents\github\commands\commands\main_arg.c(52): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\commands\commands\main_arg.c(56): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\commands\commands\main_arg.c(59): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\commands\commands\main_arg.c(60): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\commands\commands\main_arg.c(67): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\commands\commands\main_arg.c(70): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "int *"
-  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\commands\Debug\commands.exe
-  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\commands\Debug\commands.pdb (Partial PDB)
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(52): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(56): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(59): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(60): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(67): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(70): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "int *"
+  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.exe
+  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.pdb (Partial PDB)

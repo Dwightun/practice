@@ -6,7 +6,7 @@
 #define N 100
 
 int main() {
-	char *text_of_comand_list;
+	char *text_of_command_list;
 	int er = 0;
 	int i = 0;
 	char **string_of_commands;
@@ -23,7 +23,7 @@ int main() {
 		exit(1);
 	}
 	else {
-		text_of_comand_list = (char*)calloc(N, sizeof(char));
+		text_of_command_list = (char*)calloc(N, sizeof(char));
 		string_of_commands = (char**)calloc(N, sizeof(char*));
 		words_of_commands = (char***)calloc(N, sizeof(char**));
 		string_delimiter = (char*)calloc(smallN, sizeof(char));
@@ -33,10 +33,10 @@ int main() {
 		//malloc 4x
 		string_delimiter[0] = '\n';
 		word_delimiter[0] = ' ';
-		text_of_comand_list = (char*)calloc(N, sizeof(char));
-		er = fread(text_of_comand_list, sizeof(char), N, comand_list);
-		text_of_comand_list[er] = '\0';
-		printf("%s \n", text_of_comand_list);
+		text_of_command_list = (char*)calloc(N, sizeof(char));
+		er = fread(text_of_command_list, sizeof(char), N, comand_list);
+		text_of_command_list[er] = '\0';
+		printf("%s \n", text_of_command_list);
 		for (int iterator = 0; iterator < N; iterator++) {
 			count_of_word_of_string_of_commands[iterator] = (int*)calloc(N, sizeof(int));
 			string_of_commands[iterator] = (char*)calloc(N, sizeof(char));
@@ -46,9 +46,9 @@ int main() {
 				words_of_commands[iterator][i] = (char*)calloc(N, sizeof(char));
 			}
 		}
-		string_of_commands[0][0] = 'a';
+		//string_of_commands[0][0] = 'a';
 		//printf("%x \n", &count_of_strings_of_commands);
-		Split(text_of_comand_list, string_delimiter, string_of_commands, &count_of_strings_of_commands);
+		Split(text_of_command_list, string_delimiter, string_of_commands, &count_of_strings_of_commands);
 		for (size_t j = 0; j < count_of_strings_of_commands; j++) {
 			printf("%s = %d\n", string_of_commands[j], count_of_strings_of_commands);
 		}
@@ -69,7 +69,7 @@ int main() {
 			func(words_of_commands[iterator][0], daley_time[iterator]);
 			printf("%d\n", daley_time[iterator]);
 		}
-		//free(text_of_comand_list);
+		//free(text_of_command_list);
 		//free(string_of_commands);
 		//free(words_of_commands);
 	}
