@@ -34,12 +34,13 @@ int main() {
 	// fixit: пишут обычно либо tokensCount, либо tokens_count ... используйте 1й вариант, например 
 	// это касается и переменных из ф-и Split
 	Split(string, delimiter, tokens, &tokens_Count);
-	for (int iterator= 0; iterator < tokens_Count; iterator++)
+	for (int iterator= 0; iterator < (int)strlen(string); iterator++)
 	{
 		printf("%d = %s\n", iterator, tokens[iterator]);
 		free(tokens[iterator]);
 	}
 	printf("tokens_Count = %d \n", tokens_Count);
+	free(tokens);
 	free(string);
 	free(delimiter);
 	return 0;
