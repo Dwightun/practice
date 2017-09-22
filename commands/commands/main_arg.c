@@ -15,7 +15,7 @@ int main() {
 	char *word_delimiter;
 	int count_of_strings_of_commands = 0;
 	int **count_of_word_of_string_of_commands;
-	int **daley_time;
+	int **delay_time;
 	FILE *comand_list;
 	comand_list = fopen("input.txt", "r+");
 	if (comand_list == NULL) {
@@ -29,7 +29,7 @@ int main() {
 		string_delimiter = (char*)calloc(smallN, sizeof(char));
 		count_of_word_of_string_of_commands = (int**)calloc(N, sizeof(int*));
 		word_delimiter = (char*)calloc(smallN, sizeof(char));
-		daley_time = (int**)calloc(N, sizeof(int*));
+		delay_time = (int**)calloc(N, sizeof(int*));
 		//malloc 4x
 		string_delimiter[0] = '\n';
 		word_delimiter[0] = ' ';
@@ -41,7 +41,7 @@ int main() {
 			count_of_word_of_string_of_commands[iterator] = (int*)calloc(N, sizeof(int));
 			string_of_commands[iterator] = (char*)calloc(N, sizeof(char));
 			words_of_commands[iterator] = (char**)calloc(N, sizeof(char*));
-			daley_time[iterator] = (int*)calloc(N, sizeof(int));
+			delay_time[iterator] = (int*)calloc(N, sizeof(int));
 			for (size_t i = 0; i < N; i++) {
 				words_of_commands[iterator][i] = (char*)calloc(N, sizeof(char));
 			}
@@ -58,16 +58,17 @@ int main() {
 		}
 		for (size_t j = 0; j < count_of_strings_of_commands; j++) {
 			for (size_t i = 0; i < count_of_word_of_string_of_commands[j][0]; i++) {
-				printf("%s   ", words_of_commands[j][i]);
+				printf("%s/", words_of_commands[j][i]);
 			}
 			printf("= %d\n", count_of_word_of_string_of_commands[j][0]);
 		}
-		//execv(words_of_commands[1], words_of_commands);
+		execvp(words_of_commands[0][1], words_of_commands[0]);
+		printf("%s\n",words_of_commands[0][30]);
 		//system("pause");
 		for (size_t iterator = 0; iterator < count_of_strings_of_commands; iterator++)
 		{
-			func(words_of_commands[iterator][0], daley_time[iterator]);
-			printf("%d\n", daley_time[iterator]);
+			func(words_of_commands[iterator][0], delay_time[iterator]);
+			printf("%d\n", delay_time[iterator][0]);
 		}
 		//free(text_of_comand_list);
 		//free(string_of_commands);
@@ -77,6 +78,6 @@ int main() {
 	fprintf(f, "jopa");
 	fclose(f);
 	fclose(comand_list);
-	system("pause");
+	//system("pause");
 	return 0;
 }

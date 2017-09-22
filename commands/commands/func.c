@@ -39,7 +39,7 @@ void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 	}
 }
 
-void func(char* string_of_data, int* daley_time) {
+void func(char* string_of_data, int* delay_time) {
 	int start_time;
 	char *time_delimiter;
 	char **data_array;
@@ -53,9 +53,20 @@ void func(char* string_of_data, int* daley_time) {
 	}
 	Split(string_of_data, time_delimiter, data_array, &data_constant);
 	start_time = atoi(data_array[0]) * 2629743 + atoi(data_array[1]) * 86400 + (atoi(data_array[2]) - 1970) * 31556926 + atoi(data_array[3]) * 3600 + atoi(data_array[4]) * 60 + atoi(data_array[5])- time(NULL);
-	*daley_time = start_time;
+	*delay_time = start_time;
 	for (size_t iterator = 0; iterator < N; iterator++)
 	{
 		free(data_array[iterator]);
 	}
 }
+
+void use_with_delay(char** commands,int* delay,int number_of_command){
+	int i = 0 ;
+	func(commands[number_of_command], delay);
+	while (commands[i] != NULL)
+	{
+		commands[i] = commands[i+1];
+		i++;
+	}
+	execvp(commands[0],commands);
+
