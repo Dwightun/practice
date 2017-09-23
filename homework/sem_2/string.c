@@ -1,4 +1,4 @@
-
+﻿
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,9 +34,12 @@ int main() {
 	// fixit: пишут обычно либо tokensCount, либо tokens_count ... используйте 1й вариант, например 
 	// это касается и переменных из ф-и Split
 	Split(string, delimiter, tokens, &tokens_Count);
-	for (int iterator= 0; iterator < (int)strlen(string); iterator++)
+	for (int iterator= 0; iterator < (int)tokens_Count; iterator++)
 	{
 		printf("%d = %s\n", iterator, tokens[iterator]);
+	}
+	for (int iterator= 0; iterator < (int)strlen(string); iterator++)
+	{
 		free(tokens[iterator]);
 	}
 	printf("tokens_Count = %d \n", tokens_Count);
@@ -47,38 +50,31 @@ int main() {
 }
 
 void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
-	if (string == NULL || delimiter == NULL || tokens == NULL || tokens_Count == NULL)
+	if (string != NULL && delimiter != NULL && tokens != NULL && tokens_Count != NULL)
 	{
-		return;
-	}
-	else { // fixit: else лишний, у вас все равно return используется ... не круто, когда кусок кода с основной логикой в else живет
 		char* str_out;
 		int token_counter = 0;
 		char* string_word;
 		char* string_copy;
 		string_copy = (char*)malloc(sizeof(char)*N);
 		string_word = (char*)malloc(sizeof(char)*N);
-		// fixit: а кто эту память чистить будет после malloc'ов?
 		string_copy = string;
 		strcat(string_copy, delimiter);
 		for (int iterator = 0; iterator < (int)strlen(string_copy); iterator++)
 		{
-			// в целом, конечно, ваш подход с strstr выглядит жестоко ... man про strtok вы точно не смотрели)  
+			// в целом, конечно, ваш подход с strstr выглядит жестоко ... man про strtok вы точно не смотрели)
+			// re: я думал нужно реализовать именно алгоритм поиска лексем, иначе задача получается типа : 3 * x = 3 solve for x
 			str_out = strstr(string_copy, delimiter);
-			if (str_out == NULL)
-				break;
-			else // зачем вам else нужен, если break стоит
-			{
+			if (str_out != NULL && tokens[token_counter] != NULL)
 				string_word = str_out;
-				// интересно, что tokens и т.д. вы на null решили проверить, а tokens[tokensCounter] нет ...
-				// ну да ладно ...
-				strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
-				tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
-				string_copy = string_word + strlen(delimiter);
-				if (strlen(tokens[token_counter]) > 0)
-					token_counter++;
-			}
+			strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
+			tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
+			string_copy = string_word + strlen(delimiter);
+			if (strlen(tokens[token_counter]) > 0)
+				token_counter++;
 		}
 		*tokens_Count = token_counter;
+		//free(string_copy);
+		//free(string_word);
 	}
 }
