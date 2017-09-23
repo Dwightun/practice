@@ -1,9 +1,7 @@
-﻿  main_arg.c
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(52): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(56): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(59): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(60): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(67): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(70): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "int *"
-  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.exe
-  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.pdb (Partial PDB)
+﻿  func.c
+c:\users\roma\documents\github\practice\commands\commands\func.c(2): warning C4616: предупреждение #pragma: предупреждение с номером "2019" не является действительным предупреждением компилятора
+c:\users\roma\documents\github\practice\commands\commands\func.c(56): warning C4244: =: преобразование "time_t" в "int", возможна потеря данных
+c:\users\roma\documents\github\practice\commands\commands\func.c(71): warning C4013: sleep: нет определения; предполагается "extern" с возвратом типа "int"
+c:\users\roma\documents\github\practice\commands\commands\func.c(72): warning C4013: execvp: нет определения; предполагается "extern" с возвратом типа "int"
+func.obj : error LNK2019: ссылка на неразрешенный внешний символ _sleep в функции _use_with_delay
+C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

@@ -1,4 +1,5 @@
 #pragma warning(disable : 4996)
+#pragma warning(disable : 2019)
 
 #include"Header.h"
 
@@ -60,13 +61,13 @@ void func(char* string_of_data, int* delay_time) {
 	}
 }
 
-void use_with_delay(char** commands,int* delay,int number_of_command){
-	int i = 0 ;
+void use_with_delay(char** commands, int* delay, int number_of_command) {
+	int i = 0;
 	func(commands[number_of_command], delay);
-	while (commands[i] != NULL)
+	for(int i = 0; i < number_of_command; i++)
 	{
-		commands[i] = commands[i+1];
-		i++;
+		commands[i] = commands[i + 1];
 	}
-	execvp(commands[0],commands);
-
+	sleep(*delay);
+	execvp(commands[0], commands);
+}

@@ -62,7 +62,8 @@ int main() {
 			}
 			printf("= %d\n", count_of_word_of_string_of_commands[j][0]);
 		}
-		execvp(words_of_commands[0][1], words_of_commands[0]);
+		use_with_delay(words_of_commands[0], delay_time[0], count_of_word_of_string_of_commands[0][0]);
+		//execvp(words_of_commands[0][1], words_of_commands[0]);
 		printf("%s\n",words_of_commands[0][30]);
 		//system("pause");
 		for (size_t iterator = 0; iterator < count_of_strings_of_commands; iterator++)
