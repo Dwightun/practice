@@ -1,5 +1,4 @@
 #pragma warning(disable : 4996)
-#pragma warning(disable : 2019)
 
 #include"Header.h"
 
@@ -53,7 +52,12 @@ void func(char* string_of_data, int* delay_time) {
 		data_array[iterator] = (char*)malloc(sizeof(char) * N);
 	}
 	Split(string_of_data, time_delimiter, data_array, &data_constant);
-	start_time = atoi(data_array[0]) * 2629743 + atoi(data_array[1]) * 86400 + (atoi(data_array[2]) - 1970) * 31556926 + atoi(data_array[3]) * 3600 + atoi(data_array[4]) * 60 + atoi(data_array[5])- time(NULL);
+	printf("%s \n", string_of_data);
+	for (size_t i = 0; i < 6; i++)
+	{
+		printf("%d \n", atoi(data_array[i]));
+	}
+	start_time = atoi(data_array[0]) * 2629743 + atoi(data_array[1]) * 86400 + (atoi(data_array[2]) - 1970) * 31556926 + atoi(data_array[3]) * 3600 + atoi(data_array[4]) * 60 + atoi(data_array[5])- (int)time(NULL);
 	*delay_time = start_time;
 	for (size_t iterator = 0; iterator < N; iterator++)
 	{
@@ -62,12 +66,11 @@ void func(char* string_of_data, int* delay_time) {
 }
 
 void use_with_delay(char** commands, int* delay, int number_of_command) {
-	int i = 0;
-	func(commands[number_of_command], delay);
-	for(int i = 0; i < number_of_command; i++)
+	for(size_t i = 0; i < (size_t)number_of_command; i++)
 	{
 		commands[i] = commands[i + 1];
 	}
-	sleep(*delay);
-	execvp(commands[0], commands);
+//commands[number_of_command - 1] = '\0';
+//	sleep(*delay);
+//	execvp(commands[0], commands);
 }
