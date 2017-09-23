@@ -97,6 +97,10 @@ int main() {
 				use_with_delay(words_of_commands[i], delay_time[0], count_of_word_of_string_of_commands[j][0]);
 			}
 		}
+		for (size_t i = 0; i < (size_t)count_of_strings_of_commands; i++)
+		{
+			use_with_delay(words_of_commands[i], delay_time[i], count_of_word_of_string_of_commands[i][0]);
+		}
 		//use_with_delay(words_of_commands[0], delay_time[0], count_of_word_of_string_of_commands[0][0]);
 		free(text_of_command_list);
 		free(string_delimiter);

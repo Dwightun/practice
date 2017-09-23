@@ -17,18 +17,21 @@ void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 		string_word = (char*)malloc(sizeof(char)*N);
 		string_copy = string;
 		strcat(string_copy, delimiter);
-		for (int iterator = 0; iterator < (int)strlen(string_copy); iterator++)
+		for (int iterator = 0; iterator < (int)strlen(string_copy) + 1; iterator++)
 		{
+			int x = strlen(string_copy);
 			// в целом, конечно, ваш подход с strstr выглядит жестоко ... man про strtok вы точно не смотрели)
 			// re: я думал нужно реализовать именно алгоритм поиска лексем, иначе задача получается типа : 3 * x = 3 solve for x
 			str_out = strstr(string_copy, delimiter);
 			if (str_out != NULL && tokens[token_counter] != NULL)
+			{
 				string_word = str_out;
-			strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
-			tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
-			string_copy = string_word + strlen(delimiter);
-			if (strlen(tokens[token_counter]) > 0)
-				token_counter++;
+				strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
+				tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
+				string_copy = string_word + strlen(delimiter);
+				if (strlen(tokens[token_counter]) > 0)
+					token_counter++;
+			}
 		}
 		*tokens_Count = token_counter;
 		//free(string_copy);
