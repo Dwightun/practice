@@ -29,6 +29,7 @@ void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 				strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
 				tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
 				string_copy = string_word + strlen(delimiter);
+				printf("%s\n", tokens[token_counter]);
 				if (strlen(tokens[token_counter]) > 0)
 					token_counter++;
 			}
@@ -45,10 +46,8 @@ void func(char* string_of_data, int* delay_time) {
 	char **data_array;
 	int data_constant = 0;
 	time_delimiter = (char*)calloc(smallN, sizeof(char));
-	if (*time_delimiter == 0)
-	{
-		time_delimiter[0] = '/';
-	}
+	time_delimiter[0] = '/';
+	printf("----%s \n", time_delimiter);
 	data_array = (char**)malloc(sizeof(char*) * N);
 	if (*data_array)
 	{
@@ -58,15 +57,18 @@ void func(char* string_of_data, int* delay_time) {
 		}
 	}
 	Split(string_of_data, time_delimiter, data_array, &data_constant);
-	printf("%s \n", string_of_data);
+	printf("%s afsasdas\n", string_of_data);
 	data_array[6][0] = '\0';
-	printf("%s \n", data_array[5]);
+	printf("f1\n");
+	printf("%s \n", data_array[0]);
+	printf("f2\n");
 	for (size_t i = 0; i < 6; i++)
 	{
 		printf("%d \n", atoi(data_array[i]));
 	}
 	// тут можно было бы это сделать нормально, но зачем ¯\_(ツ)_/¯
 	start_time = atoi(data_array[0]) * 2629743 + atoi(data_array[1]) * 86400 + (atoi(data_array[2]) - 1970) * 31556926 + atoi(data_array[3]) * 3600 + atoi(data_array[4]) * 60 + atoi(data_array[5])- (int)time(NULL);
+	printf("f1");
 	*delay_time = start_time;
 	for (size_t iterator = 0; iterator < N; iterator++)
 	{
@@ -84,7 +86,7 @@ void use_with_delay(char** commands, int* delay, int number_of_command) {
 	}
 	for (size_t i = 0; i < number_of_command - 1; i++)
 	{
-		printf("%s ", commands[i]);
+	//	printf("%s ", commands[i]);
 	}
 	commands[number_of_command] = '\0';
 //	sleep(*delay);
