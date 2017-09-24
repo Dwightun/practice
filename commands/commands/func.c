@@ -17,7 +17,7 @@ void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 		string_word = (char*)malloc(sizeof(char)*N);
 		string_copy = string;
 		strcat(string_copy, delimiter);
-		for (int iterator = 0; iterator < (int)strlen(string_copy) + 1; iterator++)
+		for (int iterator = 0; iterator < (int)strlen(string) + 1; iterator++)
 		{
 			int x = strlen(string_copy);
 			// в целом, конечно, ваш подход с strstr выглядит жестоко ... man про strtok вы точно не смотрели)
@@ -59,6 +59,8 @@ void func(char* string_of_data, int* delay_time) {
 	}
 	Split(string_of_data, time_delimiter, data_array, &data_constant);
 	printf("%s \n", string_of_data);
+	data_array[6][0] = '\0';
+	printf("%s \n", data_array[5]);
 	for (size_t i = 0; i < 6; i++)
 	{
 		printf("%d \n", atoi(data_array[i]));
@@ -80,11 +82,11 @@ void use_with_delay(char** commands, int* delay, int number_of_command) {
 	{
 		commands[i] = commands[i + 1];
 	}
-	for (size_t i = 0; i < number_of_command; i++)
+	for (size_t i = 0; i < number_of_command - 1; i++)
 	{
-		printf("%s \n", commands[i]);
+		printf("%s ", commands[i]);
 	}
-//commands[number_of_command - 1] = '\0';
+	commands[number_of_command] = '\0';
 //	sleep(*delay);
-//	execvp(commands[0], commands);
+	execvp(commands[0], commands);
 }
