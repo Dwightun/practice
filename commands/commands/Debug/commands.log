@@ -1,7 +1,4 @@
-﻿  func.c
-c:\users\roma\documents\github\practice\commands\commands\func.c(2): warning C4616: предупреждение #pragma: предупреждение с номером "2019" не является действительным предупреждением компилятора
-c:\users\roma\documents\github\practice\commands\commands\func.c(56): warning C4244: =: преобразование "time_t" в "int", возможна потеря данных
-c:\users\roma\documents\github\practice\commands\commands\func.c(71): warning C4013: sleep: нет определения; предполагается "extern" с возвратом типа "int"
-c:\users\roma\documents\github\practice\commands\commands\func.c(72): warning C4013: execvp: нет определения; предполагается "extern" с возвратом типа "int"
-func.obj : error LNK2019: ссылка на неразрешенный внешний символ _sleep в функции _use_with_delay
-C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
+﻿  main_arg.c
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(58): warning C4018: <: несоответствие типов со знаком и без знака
+  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.exe
+  commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.pdb (Partial PDB)
