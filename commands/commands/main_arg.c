@@ -73,7 +73,7 @@ int main() {
 		for (size_t i = 0; i < (size_t)count_of_strings_of_commands; i++) {
 			Split(string_of_commands[i], word_delimiter, words_of_commands[i], count_of_word_of_string_of_commands[i]);
 		}
-		/*
+		
 		for (size_t i = 0; i < (size_t)count_of_strings_of_commands; i++)
 		{
 			for (size_t j = 0; j < (size_t)count_of_word_of_string_of_commands[i][0]; j++)
@@ -81,30 +81,52 @@ int main() {
 				printf("%d = %d = %s ", i, j, words_of_commands[i][j]);
 			}
 			printf("\n");
-		}*/
-		for (size_t iterator = 0;  iterator < (size_t)count_of_strings_of_commands;  iterator++)
-		{
-			//execvp(words_of_commands[iterator][1], words_of_commands[iterator]);
 		}
 		//system("pause");
 		printf("goose\n");
-		
 		for (size_t iterator = 0; iterator < (size_t)count_of_strings_of_commands; iterator++)
 		{
 			printf("%d | = %s\n", iterator, words_of_commands[iterator][0]);
 			func(words_of_commands[iterator][0], delay_time[iterator]);
-			printf("%d\n", delay_time[iterator][0]);
+			printf("..........................................%d\n", delay_time[iterator][0]);
+		}
+		i = 0;
+		printf("megagoose\n");
+		printf("count_of_strings_of_commands  = %d\n", count_of_strings_of_commands );
+		printf("supermegagoose\n");
+		while (count_of_strings_of_commands > i)
+		{
+			printf("**********  i = %d\n", i);
+			pid_t pid;
+			pid = fork();
+			if(pid == 0)
+			{
+				printf("powerfulgloriousgipermegagoose\n");
+				use_with_delay(words_of_commands[i], delay_time[i], count_of_word_of_string_of_commands[i][0]);
+				exit(0);
+			}
+			else
+			{
+				wait();
+			}
+			i++;
 		}
 		
-		i = 0;
-		printf("count_of_strings_of_commands  = %d", count_of_strings_of_commands );
-		while (count_of_strings_of_commands >= i)
+		/*
+		while (count_of_strings_of_commands > i)
 		{
-			printf("----- %s",words_of_commands[i][0]);
-			use_with_delay(words_of_commands[i], delay_time[0], count_of_word_of_string_of_commands[i][0]);
+			printf("gipersupermegagoose\n");
+			printf("======== %s\n",words_of_commands[i][0]);
+			printf("gloriousgipersupermegagoose\n");
+			printf("delay_time[i]=%d\n", delay_time[i][0]);
+			printf("powerfulgloriousgipermegagoose\n");
+			use_with_delay(words_of_commands[i], delay_time[i], count_of_word_of_string_of_commands[i][0]);
+			printf("pinkpowerfulgloriousgipermegagoose\n");
 			i++;
 			printf("__\n");
 		}
+		*/
+		printf("ALLAH AKBAR");
 		free(text_of_command_list);
 		free(string_delimiter);
 		free(words_of_commands);
