@@ -4,13 +4,13 @@
     <SFA>
       <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
       <FILENAME>func.c</FILENAME>
-      <LINE>66</LINE>
+      <LINE>61</LINE>
       <COLUMN>12</COLUMN>
     </SFA>
     <DEFECTCODE>6387</DEFECTCODE>
     <DESCRIPTION>"data_array[0]" может быть равен "0":  это не соответствует спецификации функции "atoi". </DESCRIPTION>
-    <FUNCTION>func</FUNCTION>
-    <DECORATED>func</DECORATED>
+    <FUNCTION>time_conv</FUNCTION>
+    <DECORATED>time_conv</DECORATED>
     <FUNCLINE>42</FUNCLINE>
     <PROBABILITY>1</PROBABILITY>
     <RANK>4</RANK>
@@ -52,84 +52,206 @@
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
         <LINE>48</LINE>
-        <COLUMN>5</COLUMN>
+        <COLUMN>19</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>52</LINE>
+        <LINE>49</LINE>
         <COLUMN>12</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>53</LINE>
-        <COLUMN>5</COLUMN>
+        <LINE>50</LINE>
+        <COLUMN>29</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>60</LINE>
+        <LINE>55</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>49</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>49</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>59</LINE>
         <COLUMN>6</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
         <LINE>61</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+      <FILENAME>func.c</FILENAME>
+      <LINE>61</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>"data_array[1]" может быть равен "0":  это не соответствует спецификации функции "atoi". Самое раннее расположение, где это могло произойти, см. в строке 61</DESCRIPTION>
+    <FUNCTION>time_conv</FUNCTION>
+    <DECORATED>time_conv</DECORATED>
+    <FUNCLINE>42</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>43</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>44</LINE>
         <COLUMN>7</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
+        <LINE>45</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>46</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>47</LINE>
+        <COLUMN>16</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>48</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>49</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>50</LINE>
+        <COLUMN>29</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
         <COLUMN>13</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
+        <LINE>57</LINE>
+        <COLUMN>23</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>28</COLUMN>
+        <LINE>55</LINE>
+        <COLUMN>49</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
+        <LINE>57</LINE>
+        <COLUMN>23</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>28</COLUMN>
+        <LINE>55</LINE>
+        <COLUMN>49</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>66</LINE>
+        <LINE>59</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>61</LINE>
         <COLUMN>12</COLUMN>
       </SFA>
     </PATH>
@@ -139,12 +261,12 @@
       <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
       <FILENAME>func.c</FILENAME>
       <LINE>48</LINE>
-      <COLUMN>5</COLUMN>
+      <COLUMN>19</COLUMN>
     </SFA>
     <DEFECTCODE>6011</DEFECTCODE>
     <DESCRIPTION>Разыменование пустого указателя "time_delimiter". </DESCRIPTION>
-    <FUNCTION>func</FUNCTION>
-    <DECORATED>func</DECORATED>
+    <FUNCTION>time_conv</FUNCTION>
+    <DECORATED>time_conv</DECORATED>
     <FUNCLINE>42</FUNCLINE>
     <PROBABILITY>1</PROBABILITY>
     <RANK>4</RANK>
@@ -192,21 +314,9 @@
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
         <LINE>48</LINE>
-        <COLUMN>5</COLUMN>
+        <COLUMN>19</COLUMN>
         <KEYEVENT>
           <ID>2</ID>
-          <KIND>ветвь</KIND>
-          <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>Пропустить эту ветвь (предполагается, что "*time_delimiter" равно false)</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>48</LINE>
-        <COLUMN>5</COLUMN>
-        <KEYEVENT>
-          <ID>3</ID>
           <KIND>использование</KIND>
           <IMPORTANCE>Essential</IMPORTANCE>
           <MESSAGE>"time_delimiter" разыменовано, но, возможно, по-прежнему равно NULL</MESSAGE>
@@ -218,13 +328,13 @@
     <SFA>
       <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
       <FILENAME>func.c</FILENAME>
-      <LINE>53</LINE>
-      <COLUMN>5</COLUMN>
+      <LINE>57</LINE>
+      <COLUMN>23</COLUMN>
     </SFA>
     <DEFECTCODE>6011</DEFECTCODE>
     <DESCRIPTION>Разыменование пустого указателя "data_array". </DESCRIPTION>
-    <FUNCTION>func</FUNCTION>
-    <DECORATED>func</DECORATED>
+    <FUNCTION>time_conv</FUNCTION>
+    <DECORATED>time_conv</DECORATED>
     <FUNCLINE>42</FUNCLINE>
     <PROBABILITY>1</PROBABILITY>
     <RANK>4</RANK>
@@ -266,12 +376,12 @@
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
         <LINE>48</LINE>
-        <COLUMN>5</COLUMN>
+        <COLUMN>19</COLUMN>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>52</LINE>
+        <LINE>49</LINE>
         <COLUMN>12</COLUMN>
         <KEYEVENT>
           <ID>1</ID>
@@ -283,414 +393,44 @@
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>53</LINE>
-        <COLUMN>5</COLUMN>
+        <LINE>50</LINE>
+        <COLUMN>29</COLUMN>
         <KEYEVENT>
           <ID>2</ID>
           <KIND>ветвь</KIND>
           <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>Пропустить эту ветвь (предполагается, что "*data_array" равно false)</MESSAGE>
+          <MESSAGE>Пропустить эту ветвь (предполагается, что "&lt;условие ветви&gt;" равно false)</MESSAGE>
         </KEYEVENT>
       </SFA>
       <SFA>
         <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
         <FILENAME>func.c</FILENAME>
-        <LINE>53</LINE>
-        <COLUMN>5</COLUMN>
+        <LINE>55</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>36</COLUMN>
         <KEYEVENT>
           <ID>3</ID>
+          <KIND>ветвь</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Войти в этот цикл (предполагается "iterator&lt;1000")</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
+        <FILENAME>func.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>23</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
           <KIND>использование</KIND>
           <IMPORTANCE>Essential</IMPORTANCE>
           <MESSAGE>"data_array" разыменовано, но, возможно, по-прежнему равно NULL</MESSAGE>
         </KEYEVENT>
-      </SFA>
-    </PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-      <FILENAME>func.c</FILENAME>
-      <LINE>64</LINE>
-      <COLUMN>8</COLUMN>
-    </SFA>
-    <DEFECTCODE>6387</DEFECTCODE>
-    <DESCRIPTION>"data_array[i]" может быть равен "0":  это не соответствует спецификации функции "atoi". </DESCRIPTION>
-    <FUNCTION>func</FUNCTION>
-    <DECORATED>func</DECORATED>
-    <FUNCLINE>42</FUNCLINE>
-    <PROBABILITY>1</PROBABILITY>
-    <RANK>4</RANK>
-    <CATEGORY>
-      <RULECATEGORY>mspft</RULECATEGORY>
-    </CATEGORY>
-    <PATH>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>43</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>44</LINE>
-        <COLUMN>7</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>45</LINE>
-        <COLUMN>8</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>46</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>47</LINE>
-        <COLUMN>16</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>48</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>52</LINE>
-        <COLUMN>12</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>53</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>14</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>37</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>57</LINE>
-        <COLUMN>24</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>50</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>37</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>57</LINE>
-        <COLUMN>24</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>50</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>37</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>60</LINE>
-        <COLUMN>6</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>61</LINE>
-        <COLUMN>7</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>13</COLUMN>
-        <KEYEVENT>
-          <ID>1</ID>
-          <KIND>объявление</KIND>
-          <IMPORTANCE>Essential</IMPORTANCE>
-          <MESSAGE>"i" равно NULL</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
-        <KEYEVENT>
-          <ID>2</ID>
-          <KIND>ветвь</KIND>
-          <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>Войти в этот цикл (предполагается "i&lt;6")</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
-        <KEYEVENT>
-          <ID>3</ID>
-          <KIND>использование</KIND>
-          <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>"i" является входными данными для "atoi" (объявлено в c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdlib.h:446)</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
-        <KEYEVENT>
-          <ID>4</ID>
-          <KIND>использование</KIND>
-          <IMPORTANCE>Essential</IMPORTANCE>
-          <MESSAGE>"data_array[i]" не должно равняться NULL, поскольку это не соответствует SAL-аннотации для "atoi"</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-    </PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-      <FILENAME>func.c</FILENAME>
-      <LINE>66</LINE>
-      <COLUMN>12</COLUMN>
-    </SFA>
-    <DEFECTCODE>6387</DEFECTCODE>
-    <DESCRIPTION>"data_array[1]" может быть равен "0":  это не соответствует спецификации функции "atoi". Самое раннее расположение, где это могло произойти, см. в строке 64</DESCRIPTION>
-    <FUNCTION>func</FUNCTION>
-    <DECORATED>func</DECORATED>
-    <FUNCLINE>42</FUNCLINE>
-    <PROBABILITY>1</PROBABILITY>
-    <RANK>4</RANK>
-    <CATEGORY>
-      <RULECATEGORY>mspft</RULECATEGORY>
-    </CATEGORY>
-    <PATH>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>43</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>44</LINE>
-        <COLUMN>7</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>45</LINE>
-        <COLUMN>8</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>46</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>47</LINE>
-        <COLUMN>16</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>48</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>52</LINE>
-        <COLUMN>12</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>53</LINE>
-        <COLUMN>5</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>14</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>37</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>57</LINE>
-        <COLUMN>24</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>50</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>37</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>57</LINE>
-        <COLUMN>24</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>50</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>55</LINE>
-        <COLUMN>37</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>60</LINE>
-        <COLUMN>6</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>61</LINE>
-        <COLUMN>7</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>13</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>28</COLUMN>
-        <KEYEVENT>
-          <ID>1</ID>
-          <KIND>объявление</KIND>
-          <IMPORTANCE>Essential</IMPORTANCE>
-          <MESSAGE>"i" может быть равно 2</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
-        <KEYEVENT>
-          <ID>2</ID>
-          <KIND>ветвь</KIND>
-          <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>Продолжить этот цикл (предполагается "i&lt;6")</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
-        <KEYEVENT>
-          <ID>3</ID>
-          <KIND>использование</KIND>
-          <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>"i" является входными данными для "atoi" (объявлено в c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\stdlib.h:446)</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>64</LINE>
-        <COLUMN>8</COLUMN>
-        <KEYEVENT>
-          <ID>4</ID>
-          <KIND>использование</KIND>
-          <IMPORTANCE>Essential</IMPORTANCE>
-          <MESSAGE>"data_array[i]" не должно равняться NULL, поскольку это не соответствует SAL-аннотации для "atoi"</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>28</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>62</LINE>
-        <COLUMN>22</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>c:\users\roma\documents\github\practice\commands\commands\</FILEPATH>
-        <FILENAME>func.c</FILENAME>
-        <LINE>66</LINE>
-        <COLUMN>12</COLUMN>
       </SFA>
     </PATH>
   </DEFECT>

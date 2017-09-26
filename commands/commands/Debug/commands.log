@@ -1,4 +1,14 @@
 ﻿  main_arg.c
-c:\users\roma\documents\github\practice\commands\commands\main_arg.c(58): warning C4018: <: несоответствие типов со знаком и без знака
+  func.c
+  Компиляция...
+  Создание кода...
   commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.exe
   commands.vcxproj -> C:\Users\Roma\Documents\GitHub\practice\commands\Debug\commands.pdb (Partial PDB)
+c:\users\roma\documents\github\practice\commands\commands\func.c(61): warning C6387: "data_array[0]" может быть равен "0":  это не соответствует спецификации функции "atoi". 
+c:\users\roma\documents\github\practice\commands\commands\func.c(48): warning C6011: Разыменование пустого указателя "time_delimiter". 
+c:\users\roma\documents\github\practice\commands\commands\func.c(57): warning C6011: Разыменование пустого указателя "data_array". 
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(42): warning C6387: "text_of_command_list" может быть равен "0":  это не соответствует спецификации функции "fread". 
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(43): warning C6011: Разыменование пустого указателя "text_of_command_list". Самое раннее расположение, где это могло произойти, см. в строке 42
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(61): warning C6385: Чтение недопустимых данных из "count_of_word_of_string_of_commands":  доступный для чтения объем равен "_Param_(1)*_Param_(2)" байт, однако считать можно только "8" байт.
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(61): warning C6011: Разыменование пустого указателя "words_of_commands". 
+c:\users\roma\documents\github\practice\commands\commands\main_arg.c(65): warning C6385: Чтение недопустимых данных из "delay_time":  доступный для чтения объем равен "_Param_(1)*_Param_(2)" байт, однако считать можно только "8" байт.
