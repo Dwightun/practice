@@ -1,6 +1,3 @@
-#pragma warning(disable : 4996)
-
-
 #include "Header.h"
 
 #define smallN 2
@@ -21,7 +18,6 @@ int main(int argc, char* argv[]) {
 	size_t i1;
 	size_t i2;
 	FILE *command_list = fopen("input.txt", "r+");
-	//command_list = fopen(argv[1], "r+");
 	if (command_list != NULL) {
 		string_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
 		string_delimiter[0] = '\n';
@@ -94,6 +90,5 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 	fclose(command_list);
-	system("pause");
 	return 0;
 }

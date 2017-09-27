@@ -4,6 +4,7 @@
 #include <malloc.h>
 #include <time.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 
 void Split(char* string, char* delimiter, char** tokens, int* tokens_Count);
