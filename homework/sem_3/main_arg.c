@@ -1,9 +1,14 @@
 #include "Header.h"
 
-#define smallN 2
+#define smallN 2 // что значит smallN? нужно либо понятное название, либо коммент
 #define N 1000
 
 int main(int argc, char* argv[]) {
+	/*
+	fixit: переменные не обязательно объялять все в одном месте...
+	объявляйте переменную там, где она впервые требуется: куда лучше минимизировать время
+	жизни локальных переменных, что был меньше шанс совершить ошибку
+	*/
 	char *text_of_command_list;
 	int size_of_input = 0;
 	char **string_of_commands;
@@ -19,6 +24,11 @@ int main(int argc, char* argv[]) {
 	size_t i2;
 	FILE *command_list = fopen("input.txt", "r+");
 	if (command_list != NULL) {
+	/*
+	fixit: разбейте этот код на отдельные ф-и: считать строки, посплитить, запустить ...
+	на этот монолитный код сложно смотреть.
+	*/		
+		
 		string_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
 		string_delimiter[0] = '\n';
 		word_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
@@ -55,6 +65,9 @@ int main(int argc, char* argv[]) {
 			time_conv(words_of_commands[iterator][0], delay_time[iterator]);
 		}
 		i = 0;
+		/*
+		fixit: почему здесь не for, а while?
+		*/
 		while (count_of_strings_of_commands > i)
 		{
 			pid_t pid;
@@ -64,10 +77,17 @@ int main(int argc, char* argv[]) {
 				exit(0);
 			}
 		else{
+			// fixit: у вас перед запуском следующей команды родитель дожидается завершения предыдущей?
+			// а что если уже пора запустить следующую, а предыдущая очень долго работает?
 			wait();
 		}
 			i++;
 		}
+		
+		/*
+		fixit: назовите переменные i1, i2 более осмысленно
+		либо, т.к. циклы простые, то можно назвать i,j но объявить переменные рядом с циклом
+		*/
 		for (i1 = 0; i1 < (size_t)count_of_strings_of_commands; i1++){
 			for (i2 = 0; i2 < N; i2++){
 				free(words_of_commands[i1][i2]);
