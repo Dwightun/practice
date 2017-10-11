@@ -45,13 +45,9 @@ void time_conv(char* string_of_data, int* delay_time) {
 		printf("NULL POINTER");
 		return;
 	}
-	/*
-	Очень странно выглядит ваше название переменной iterator: оно не вносит никой новой информации, и ещё и длинное.
-	В такой случае i ничуть не хуже. 
-	*/
-	for (size_t iterator = 0; iterator < TIME_COUNT_CONSTANT; iterator++)
+	for (size_t iterator = 0; i < TIME_COUNT_CONSTANT; iterator++)
 	{
-		data_array[iterator] = (char*)calloc(TIME_UNIT_SIZE_CONSTANT, sizeof(char)); //freed
+		data_array[i] = (char*)calloc(TIME_UNIT_SIZE_CONSTANT, sizeof(char)); //freed
 	}
 	Split(string_of_data, time_delimiter, data_array, &data_constant);
 	// тут можно было бы это сделать нормально, но зачем ¯\_(ツ)_/¯
@@ -64,14 +60,6 @@ void time_conv(char* string_of_data, int* delay_time) {
 }
 
 void use_with_delay(char** commands, int* delay, int number_of_command) {
-	/*
-	fixit: зачем этот явный сдвиг? почему не execvp(commands[1], commands + 1); ?
-	*/
-	for(size_t i = 0; i < (size_t)number_of_command; i++){
-		commands[i] = commands[i + 1];
-	}
-	commands[number_of_command - 1] = '\0';
-	printf("delay == %d\n", *delay);
 	sleep(*delay);
-	execvp(commands[0], commands);
+	execvp(commands[0], commands + 1);
 }
