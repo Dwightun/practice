@@ -1,80 +1,101 @@
-﻿
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#include <cerrno>  
+
 #define N 1000
 
-void Split(char* string, char* delimiter, char** tokens, int* tokens_Count);
+void Split(char* string, char* delimiter, char** tokens, int* tokensCount);
 
 int main() {
+	errno = 0;
 	char* string;
 	char* delimiter;
 	char** tokens;
-	int tokens_Count = 0;
-	// fixit: пробелы вокруг * -> sizeof(char) * N ... и везде ниже по коду
+	int tokensCount = 0;
+<<<<<<< HEAD
+	int j = 0;
+	char c;
 	string = (char*)malloc(sizeof(char)*N);
 	delimiter = (char*)malloc(sizeof(char)*N);
-	//scanf("%s %s", string, delimiter);
-	
-	// у вас следующие две строки повторяются дважды ... вы видимо символ перевода строки удаляете так
-	// по-хорошему, любого дублирования кода надо избегать и сделать отдельную ф-ю для считавания
-	fgets(string, N, stdin);
-	string[strlen(string) - 1] = 0;
-	fgets(delimiter, N, stdin);
-	delimiter[strlen(delimiter) - 1] = 0;
-	tokens = (char**)malloc(sizeof(char*)*N);
-	
-	// памяти, конечно, прям от души выделили :) ну, дело ваше ...
-	for (int iterator = 0; iterator < (int)strlen(string); iterator++)
-	{
-		tokens[iterator] = (char*)malloc(sizeof(char)*strlen(string));
+=======
+	// fixit: пробелы вокруг бинарных операторов и после запятых
+	string = (char*)malloc(sizeof(char)*N);
+	delimiter = (char*)malloc(sizeof(char)*N);
+	scanf("%s %s",string,delimiter);
+	// fixit: 100 - magic number ... нужно именованная константа
+>>>>>>> 166548c457bc4bad5f55344efb82dc8e30c90679
+	tokens = (char**)malloc(sizeof(char*)*100);
+	while ((c = getchar()) != '\n'){
+		string[j] = c;
+		j++;
 	}
-	
-	// fixit: пишут обычно либо tokensCount, либо tokens_count ... используйте 1й вариант, например 
-	// это касается и переменных из ф-и Split
-	Split(string, delimiter, tokens, &tokens_Count);
-	for (int iterator= 0; iterator < (int)tokens_Count; iterator++)
-	{
-		printf("%d = %s\n", iterator, tokens[iterator]);
+	string[j++] = '\0';
+	j = 0;
+	while ((c = getchar()) != '\n') {
+		delimiter[j] = c;
+		j++;
 	}
-	for (int iterator= 0; iterator < (int)strlen(string); iterator++)
+	delimiter[j++] = '\0';
+	for (int i = 0; i < strlen(string); i++)
 	{
-		free(tokens[iterator]);
+		tokens[i] = (char*)malloc(sizeof(char)*strlen(string));
 	}
-	printf("tokens_Count = %d \n", tokens_Count);
-	free(tokens);
+	//string = NULL;
+	Split(string,delimiter,tokens,&tokensCount);
+	for (int i = 0; i < tokensCount; i++)
+	{
+		printf("%d = %s\n", i, tokens[i]);
+		free(tokens[i]);
+	}
+	if (errno == 0) {
+		printf("%d \n", tokensCount);
+	}
+	printf("%s \n\n", errno);
 	free(string);
+	//free(*tokens);
 	free(delimiter);
+	system("pause");
 	return 0;
 }
 
-void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
-	if (string != NULL && delimiter != NULL && tokens != NULL && tokens_Count != NULL)
+void Split(char* string, char* delimiter, char** tokens, int* tokensCount) {
+	if (string==NULL || delimiter==NULL || tokens==NULL || tokensCount==NULL)
 	{
-		char* str_out;
-		int token_counter = 0;
+		// fixit: errno - это int'овая переменная, а вы ей нечто неожиданное присваиваете
+		// по-моему обнулить tokensCount и выйти вроде бы достаточно будет
+		errno = "EINVAL";
+	}
+	else {
+		// fixit: придумайте более "говорящее" имя для j
+		int j = 0;
 		char* string_word;
-		char* string_copy;
-		string_copy = (char*)malloc(sizeof(char)*N);
 		string_word = (char*)malloc(sizeof(char)*N);
-		string_copy = string;
-		strcat(string_copy, delimiter);
-		for (int iterator = 0; iterator < (int)strlen(string_copy); iterator++)
+		strcat(string, delimiter);
+		for (int i = 0; i < strlen(string) + 1; i++)
 		{
-			// в целом, конечно, ваш подход с strstr выглядит жестоко ... man про strtok вы точно не смотрели)
-			// re: я думал нужно реализовать именно алгоритм поиска лексем, иначе задача получается типа : 3 * x = 3 solve for x
-			str_out = strstr(string_copy, delimiter);
-			if (str_out != NULL && tokens[token_counter] != NULL)
-				string_word = str_out;
-			strncpy(tokens[token_counter], string_copy, strlen(string_copy) - strlen(string_word));
-			tokens[token_counter][strlen(string_copy) - strlen(string_word)] = '\0';
-			string_copy = string_word + strlen(delimiter);
-			if (strlen(tokens[token_counter]) > 0)
-				token_counter++;
+			// fixit: вы дважны зачем-то strstr вызываете 
+			if (strstr(string, delimiter) == NULL)
+				break;
+			else
+			{
+				// string_word - gnu code style ... обычно, если tokensCount, то и stringWord ...
+				string_word = strstr(string, delimiter);
+				strncpy(tokens[j], string, strlen(string) - strlen(string_word));
+				tokens[j][strlen(string) - strlen(string_word)] = '\0';
+				string = string_word + strlen(delimiter);
+<<<<<<< HEAD
+				if (tokens[j][0] != '\0')
+=======
+				
+				// мне кажется, если написать strlen(tokens[j]) > 0 ... намерения будут яснее
+				if (tokens[j][0] != 0)
+>>>>>>> 166548c457bc4bad5f55344efb82dc8e30c90679
+					j++;
+			}
 		}
-		*tokens_Count = token_counter;
-		//free(string_copy);
-		//free(string_word);
+		*tokensCount = j;
 	}
 }

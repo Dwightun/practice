@@ -66,9 +66,6 @@ int main() {
 		free(string_of_commands);
 		free(words_of_commands);
 	}
-	FILE *f = fopen("output.txt", "w");
-	fprintf(f, "jopa");
-	fclose(f);
 	fclose(comand_list);
 	system("pause");
 	return 0;
