@@ -1,0 +1,45 @@
+: Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz
+N = 1000 
+c = 1
+
+real	0m7.891s
+user	0m7.688s
+sys	0m0.078s
+
+
+
+
+
+N = 1000 
+c = 2
+
+real	0m4.544s
+user	0m7.625s
+sys	0m0.203s
+
+
+
+
+
+N = 1000 
+c = 3
+
+real	0m3.119s
+user	0m7.375s
+sys	0m0.047s
+
+
+
+
+
+N = 1000 
+c = 4
+
+real	0m2.596s
+user	0m7.484s
+sys	0m0.078s
+
+
+
+
+

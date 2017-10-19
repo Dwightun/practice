@@ -1,0 +1,45 @@
+: Intel(R) Core(TM) i5-4200M CPU @ 2.50GHz
+N = 1000 
+c = 1
+
+real	0m7.490s
+user	0m7.469s
+sys	0m0.006s
+
+
+
+
+
+N = 1000 
+c = 2
+
+real	0m4.328s
+user	0m7.709s
+sys	0m0.011s
+
+
+
+
+
+N = 1000 
+c = 3
+
+real	0m4.563s
+user	0m10.594s
+sys	0m0.007s
+
+
+
+
+
+N = 1000 
+c = 4
+
+real	0m4.965s
+user	0m16.837s
+sys	0m0.009s
+
+
+
+
+

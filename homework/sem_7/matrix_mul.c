@@ -1,22 +1,9 @@
-/*some test
-N t size
-1 9.293 1000
-1 9.401 1000
-2 5.800 1000
-2 5.783 1000
-3 4.506 1000
-3 4.655 1000
-4 4.089 1000
-4 4.064 1000
-t = 9,1 * pow(N, -0,61); this is the dependence of time from N
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
 #include <string.h>
-#include <time.h>
+#include <errno.h>
 //this structure contains our matrices and size of it
 typedef struct {
 	int size;
@@ -34,18 +21,19 @@ float* generate_empty_matrix(int size); //clear from signature :)
 float* generate_and_fill_matrix(int size); //clear from signature :)
 float dot_prod(matrix_t *matrix, int i, int j); //this function calculates dot product of column and string
 void matrix_print(float *mat, int size); //this function calculate
+void is_matrix_created(matrix_t matrix);
 
 int main(int argc, char** argv) {
 	srand(time(NULL)); //I think this is  "THE KOCTb|Lb" (also used to generate really random numbers)
 	if (argc < 2 || argc > 3)
 	{
-		printf("R U RETARD?(input)\n");
+		perror("wrong amount of arguments");
 		exit(-3);
 	}
 	int size = atoi(argv[1]);
 	if (size < 1)
 	{
-		printf("R U RETARD?(size)\n");
+		perror("wrong size of matrix");
 		exit(-3);
 	}
 	int count_of_thread;
@@ -54,29 +42,39 @@ int main(int argc, char** argv) {
 		count_of_thread = atoi(argv[2]);
 		if (count_of_thread < 1)
 		{
-			printf("R U RETARD?(count_of_thread)\n");
+			perror("wrong amount of threads");
 			exit(-3);
 		}
 	}else {
 		count_of_thread = sysconf(_SC_NPROCESSORS_ONLN); // wow amazing func, such func
 		if (count_of_thread < 1)
 		{
-			printf("SYS IS RETAR\n");
+			perror("wrong amount of arguments");
 			count_of_thread = 2; // cause sys did give the count let's define it as 2
 		}else{
-			printf("count_of_thread = %d \n", count_of_thread);
+			printf("count_of_threads = %d \n", count_of_thread);
 		}
 	}
 	matrix_t res;
 	res.size = size;
-	res.a = generate_and_fill_matrix(size); //calloc+
-	res.b = generate_and_fill_matrix(size);	//calloc+
-	res.c = generate_empty_matrix(size);	//calloc+
-	printf("SUDDENLY WE CREATED SOME MATRIXS\n");
+	res.a = generate_and_fill_matrix(size); //calloc +
+	res.b = generate_and_fill_matrix(size);	//calloc +
+	res.c = generate_empty_matrix(size);	//calloc +
+	is_matrix_created(res);
+	//printf("SUDDENLY WE CREATED SOME MATRIXS\n");
 	pthread_t *th = (pthread_t*)malloc(sizeof(pthread_t) * count_of_thread); //calloc +
-	printf("NOW WE R GOING TO USE SOME THREADS\n");
+	if (th == NULL){
+		perror("unable to allocate memory for thread structure");
+			exit(-3);
+	}
+	//printf("NOW WE R GOING TO USE SOME THREADS\n");
 	for (size_t i = 0; i < count_of_thread; i++){
 		order_t* order = (order_t*)malloc(sizeof(matrix_t)); //calloc *n
+		if (order == NULL)
+		{
+			perror("unable to allocate memory for order");
+			exit(-3);
+		}
 		matrix_t* local_matrix = malloc(sizeof(matrix_t));	//calloc *n
 		local_matrix->a = generate_empty_matrix(size);
 		memcpy(local_matrix->a, res.a, sizeof(float) * size * size);
@@ -92,7 +90,7 @@ int main(int argc, char** argv) {
 		int start_status = pthread_create(&th[i], NULL, calc_routine, order);
 		if (start_status != 0)
 		{
-			printf("\n");
+			perror("wrong amount of arguments");
 			exit(-3);
 		}
 	}
@@ -110,6 +108,12 @@ int main(int argc, char** argv) {
 	free(res.c);
 	free(th);
 	exit;
+}
+void is_matrix_created(matrix_t m) {
+	if (m.a == NULL || m.b == NULL || m.c == NULL) {
+		perror("failure with matrix creations");
+		exit(-4);
+	}
 }
 
 void* calc_routine(void* arg) {
@@ -140,7 +144,7 @@ float* generate_and_fill_matrix(int size) {
 	}
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
-			*(matrix + i*size + j) = rand()/100000000; //didn't find a good way to generate random numbers for each single execution of programm
+			*(matrix + i*size + j) = rand()/100000000.0; //didn't find a good way to generate random numbers for each single execution of programm
 		}
 	}
 	return matrix;

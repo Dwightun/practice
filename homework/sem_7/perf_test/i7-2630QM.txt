@@ -1,0 +1,89 @@
+: Intel(R) Core(TM) i7-2630QM CPU @ 2.00GHz
+N = 1000 
+c = 1
+
+real	0m7.821s
+user	0m7.808s
+sys	0m0.008s
+
+
+
+
+
+N = 1000 
+c = 2
+
+real	0m5.371s
+user	0m9.392s
+sys	0m0.008s
+
+
+
+
+
+N = 1000 
+c = 3
+
+real	0m4.206s
+user	0m9.872s
+sys	0m0.020s
+
+
+
+
+
+N = 1000 
+c = 4
+
+real	0m4.365s
+user	0m12.172s
+sys	0m0.016s
+
+
+
+
+
+N = 1000 
+c = 5
+
+real	0m4.511s
+user	0m16.216s
+sys	0m0.040s
+
+
+
+
+
+N = 1000 
+c = 6
+
+real	0m4.438s
+user	0m17.656s
+sys	0m0.044s
+
+
+
+
+
+N = 1000 
+c = 7
+
+real	0m4.053s
+user	0m17.856s
+sys	0m0.024s
+
+
+
+
+
+N = 1000 
+c = 8
+
+real	0m4.242s
+user	0m20.216s
+sys	0m0.032s
+
+
+
+
+
