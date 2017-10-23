@@ -8,6 +8,11 @@
 #define TIME_COUNT_CONSTANT 6
 #define TIME_UNIT_SIZE_CONSTANT 10
 
+/*
+называйте переменные/ф-и в одном стиле:
+tokens_Count -> либо tokens_сount, либо tokensCount
+если Split, то ConvertTime вместо time_conv
+*/
 void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 	if (string != NULL && delimiter != NULL && tokens != NULL && tokens_Count != NULL){
 		char* str_out;
