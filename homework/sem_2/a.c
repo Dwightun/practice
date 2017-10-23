@@ -22,6 +22,9 @@ int main(){
 	int x;
 	char* s1;
 	scanf("%d",&x);
+	/*
+	fixit: пробелы вокруг бинарных операторов и после запятых
+	*/
 	s1=(char*)malloc(sizeof(char)*(1<<(x-1)));
 	s1[0]='a';
 	GenerateString(x,s1);
