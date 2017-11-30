@@ -1,6 +1,4 @@
-﻿
-
-#include"Header.h"
+﻿#include"TimeAndSplit.h"
 
 #define smallN 2
 #define N 1000
@@ -8,13 +6,9 @@
 #define TIME_COUNT_CONSTANT 6
 #define TIME_UNIT_SIZE_CONSTANT 10
 
-/*
-называйте переменные/ф-и в одном стиле:
-tokens_Count -> либо tokens_сount, либо tokensCount
-если Split, то ConvertTime вместо time_conv
-*/
-void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
-	if (string != NULL && delimiter != NULL && tokens != NULL && tokens_Count != NULL){
+
+void split(char* string, char* delimiter, char** tokens, int* tokens_count) {
+	if (string != NULL && delimiter != NULL && tokens != NULL && tokens_count != NULL){
 		char* str_out;
 		int token_counter = 0;
 		char* string_word;
@@ -35,7 +29,7 @@ void Split(char* string, char* delimiter, char** tokens, int* tokens_Count) {
 					token_counter++;
 			}
 		}
-		*tokens_Count = token_counter;
+		*tokens_count = token_counter;
 	}
 }
 
@@ -50,11 +44,11 @@ void time_conv(char* string_of_data, int* delay_time) {
 		printf("NULL POINTER");
 		return;
 	}
-	for (size_t iterator = 0; i < TIME_COUNT_CONSTANT; iterator++)
+	for (size_t i = 0; i < TIME_COUNT_CONSTANT; i++)
 	{
 		data_array[i] = (char*)calloc(TIME_UNIT_SIZE_CONSTANT, sizeof(char)); //freed
 	}
-	Split(string_of_data, time_delimiter, data_array, &data_constant);
+	split(string_of_data, time_delimiter, data_array, &data_constant);
 	// тут можно было бы это сделать нормально, но зачем ¯\_(ツ)_/¯
 	*delay_time = atoi(data_array[0]) * 2629743 + atoi(data_array[1]) * 86400 + (atoi(data_array[2]) - 1970) * 31556926 + atoi(data_array[3]) * 3600 + atoi(data_array[4]) * 60 + atoi(data_array[5])- (int)time(NULL);
 	for (size_t iterator = 0; iterator < TIME_COUNT_CONSTANT; iterator++){
@@ -65,6 +59,49 @@ void time_conv(char* string_of_data, int* delay_time) {
 }
 
 void use_with_delay(char** commands, int* delay, int number_of_command) {
-	sleep(*delay);
-	execvp(commands[0], commands + 1);
+	printf("asdasd\n");
+	//sleep(*delay);
+	//execvp(commands[0], commands + 1);
+}
+
+int mem_alloc(char* text_of_command_list, char** string_of_commands, char*** words_of_commands, char* string_delimiter, char *word_delimiter, int** delay_time, int** count_of_word_of_string_of_commands, int* count_of_strings_of_commands, int size_of_input, int size_of_command_list) {
+
+	text_of_command_list = (char*)calloc(size_of_command_list, sizeof(char)); //freed
+	string_of_commands = (char**)calloc(size_of_input, sizeof(char*)); //freed
+	words_of_commands = (char***)calloc(N, sizeof(char**)); //unsure about it
+	delay_time = (int**)calloc(count_of_strings_of_commands, sizeof(int*)); //freed
+	count_of_word_of_string_of_commands = (int**)calloc(count_of_strings_of_commands, sizeof(int*));
+	for (size_t iterator = 0; iterator < (size_t)count_of_strings_of_commands; iterator++) {
+		string_of_commands[iterator] = (char*)calloc(N, sizeof(char)); //freed
+		delay_time[iterator] = (int*)calloc(N, sizeof(int)); //freed
+		words_of_commands[iterator] = (char**)calloc(N, sizeof(char*)); //freed
+		count_of_word_of_string_of_commands[iterator] = (int*)calloc(N, sizeof(int)); //freed
+		for (size_t i = 0; i < N; i++) {
+			words_of_commands[iterator][i] = (char*)calloc(N, sizeof(char)); //freed
+		}
+	}
+	string_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
+	string_delimiter[0] = '\n';
+	word_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
+	word_delimiter[0] = ' ';
+	if (text_of_command_list == NULL || string_of_commands == NULL || words_of_commands == NULL || delay_time == NULL || count_of_word_of_string_of_commands == NULL || string_delimiter == NULL || word_delimiter == NULL) return 0;
+	return 1;
+}
+
+int read_file(FILE* command_list, long* size_of_command_list, int* count_of_strings_of_commands, int* size_of_input, char *text_of_command_list) {
+	fseek(command_list, 0, SEEK_END);
+	*size_of_command_list = ftell(command_list);
+	fseek(command_list, 0, SEEK_SET);
+	while (!feof(command_list)) {
+		if (fgetc(command_list) == '\n')
+			(*count_of_strings_of_commands)++;
+	}
+	fseek(command_list, 0, SEEK_SET);
+	*size_of_input = fread(text_of_command_list, sizeof(char), size_of_command_list, command_list);
+	text_of_command_list[*size_of_input] = '\0';
+	if (size_of_command_list == NULL)
+	{
+		return 0;
+	}
+	return 1;
 }

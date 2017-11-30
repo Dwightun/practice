@@ -6,18 +6,12 @@
 
 int main() {
 	int height = 0;
-	/*
-	В текущем контерсте имя переменной iterator ничуть не лучше i.
-	Никакой дополнительной информации название не несет.
-	Если хотите подробнее назвать переменную, то хотя бы
-	processIndex, например
-	*/
-	int iterator = 0;
+	int proccess_index = 0;
 	int *status;
 	pid_t pid;
 	printf("gimme height\n");
 	scanf("%d", &height);
-	for(iterator = 0; iterator < height; iterator++) {
+	for(proccess_index = 0; proccess_index < height; proccess_index++) {
 		pid = fork();
 		if(pid == 0) {
 			printf("id of child process = %d\n", getpid());

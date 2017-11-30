@@ -11,10 +11,7 @@ typedef struct {
 } matrix_t;
 //this structure contains the way of order of multiplying
 typedef struct {
-	int threadnum;
-/*
-fixit: соблюдайте единый стиль: thread_num
-*/
+	int thread_num;
 	int count_of_thread;
 	matrix_t* res;
 } order_t;
@@ -24,24 +21,12 @@ float* generate_empty_matrix(int size); //clear from signature :)
 float* generate_and_fill_matrix(int size); //clear from signature :)
 float dot_prod(matrix_t *matrix, int i, int j); //this function calculates dot product of column and string
 void matrix_print(float *mat, int size); //this function calculate
-
-/*
-fixit: из названия ф-и ожидается, что она вернет либо 1, если матрица была создана,
-либо 0 в случае ошибки.
-Либо переименуйте, либо измените её текущее поведение.
-*/
-void is_matrix_created(matrix_t matrix);
+int is_matrix_created(matrix_t matrix);
 
 int main(int argc, char** argv) {
 	srand(time(NULL)); //I think this is  "THE KOCTb|Lb" (also used to generate really random numbers)
 	/*
-	Если вы вносите изменения в свой код, и следите за тем, насколько это изменение ускорило код, то
-	по-моему правильнее было бы написать 
-	const int SEED = 123; // некое случайное число
-	srand(SEED);
-	тогда от запуску к запуску у вас будут генерироваться одни и те же матрицы (псевдослучайные),
-	и вы будете смотреть, как изменения в алгоритме влияют на ускорение кода ...
-	при фиксированных остальных параметрах
+	про seed понятно, но переделовать тесты не очень хочется
 	*/
 	if (argc < 2 || argc > 3)
 	{
@@ -78,14 +63,14 @@ int main(int argc, char** argv) {
 	res.a = generate_and_fill_matrix(size); //calloc +
 	res.b = generate_and_fill_matrix(size);	//calloc +
 	res.c = generate_empty_matrix(size);	//calloc +
-	is_matrix_created(res);
-	//printf("SUDDENLY WE CREATED SOME MATRIXS\n");
+	if (!is_matrix_created(res)) {
+		exit(-3);
+	}
 	pthread_t *th = (pthread_t*)malloc(sizeof(pthread_t) * count_of_thread); //calloc +
 	if (th == NULL){
 		perror("unable to allocate memory for thread structure");
 			exit(-3);
 	}
-	//printf("NOW WE R GOING TO USE SOME THREADS\n");
 	for (size_t i = 0; i < count_of_thread; i++){
 		order_t* order = (order_t*)malloc(sizeof(matrix_t)); //calloc *n
 		if (order == NULL)
@@ -93,20 +78,8 @@ int main(int argc, char** argv) {
 			perror("unable to allocate memory for order");
 			exit(-3);
 		}
-		/*
-		fixit: непонятно, зачем копировать кучу раз исходные матрицы.
-		можно обойтись без копий ... так и следует сделать
-		*/
-		matrix_t* local_matrix = malloc(sizeof(matrix_t));	//calloc *n
-		local_matrix->a = generate_empty_matrix(size);
-		memcpy(local_matrix->a, res.a, sizeof(float) * size * size);
-		local_matrix->b = generate_empty_matrix(size);
-		memcpy(local_matrix->b, res.b, sizeof(float) * size * size);
-		local_matrix->size = size;
-		local_matrix->c = res.c;
-		//wow we got some copies
-		order->res = local_matrix;
-		order->threadnum = i;
+		order->res = &res;
+		order->thread_num = i;
 		order->count_of_thread = count_of_thread;
 		//did order list
 		int start_status = pthread_create(&th[i], NULL, calc_routine, order);
@@ -120,41 +93,25 @@ int main(int argc, char** argv) {
 	{
 		pthread_join(th[i], NULL);
 	}
-	/*
-	вероятно т.к. ваша цель измерить время работы умножения матриц от числа нитей,
-	то вывод матриц на экран и другие вспомогательные операции нужно убрать/минимизировать
-	*/
-	matrix_print(res.a, size);
-	printf("-----------------------------\n");
-	matrix_print(res.b, size);
-	printf("-----------------------------\n");
-	matrix_print(res.c, size);
 	free(res.a);
 	free(res.b);
 	free(res.c);
 	free(th);
 	exit;
 }
-void is_matrix_created(matrix_t m) {
+int is_matrix_created(matrix_t m) {
 	if (m.a == NULL || m.b == NULL || m.c == NULL) {
 		perror("failure with matrix creations");
-		exit(-4);
+		return 0;
 	}
 }
 
 void* calc_routine(void* arg) {
 	order_t* order = (order_t*)arg;
 	int size = order->res->size;
-	for (int i = order->threadnum; i < size; i += order->count_of_thread) {
+	for (int i = order->thread_num; i < size; i += order->count_of_thread) {
 		for (int j = 0; j < size; ++j) {
-			/*
-			fixit: пробелы вокруг *
-			*/
-			*(order->res->c + i*size + j) = dot_prod(order->res, i, j);
-			/*
-			FYI:
-			https://stackoverflow.com/questions/20467117/for-matrix-operation-why-is-ikj-faster-than-ijk
-			*/
+			*(order->res->c + i * size + j) = dot_prod(order->res, i, j);
 		}
 	}
 	return NULL;
@@ -198,10 +155,7 @@ void matrix_print(float *mat, int size){
 	{
 		for (int j = 0; j < size; j++)
 		{
-			/*
-			fixit: пробелы вокруг бинарных операторов
-			*/
-			printf("%1.3g ", *(mat+size*i + j));
+			printf("%1.3g ", *(mat + size * i + j));
 		}
 		printf("\n");
 	}
