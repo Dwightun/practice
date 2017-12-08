@@ -104,9 +104,7 @@ int is_matrix_created(matrix_t m) {
 		perror("failure with matrix creations");
 		return 0;
 	}
-	/*
-	fixit: нужно вернуть какое-то значение во всех ветках исполнения
-	*/
+	return 1;
 }
 
 void* calc_routine(void* arg) {
