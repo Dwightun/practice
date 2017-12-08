@@ -8,6 +8,11 @@
 #include <string.h>
 
 #define NAMESIZE 100
+/*
+fixit: давайте без глобальных переменных обойдемся
+
+просто запускайте рекурсию от DFS(..., deep - 1, ...);
+*/
 int h = 0;
 
 void DFS(const char *s, int deep, const char *file) { 
@@ -25,7 +30,13 @@ void DFS(const char *s, int deep, const char *file) {
 			//printf("%ld - %s [%d] %d\n", entry->d_ino, entry->d_name, entry->d_type, entry->d_reclen);
 			if (!strcmp(entry->d_name, file)) {
 				printf("Found %s in dirctory %s\n", file, s);
-				exit(EXIT_SUCCESS);    
+				exit(EXIT_SUCCESS);
+				/*
+				fixit: странно убивать текущий процесс в случае успеха, т.к. 
+				поиск файла обычно это часть большой задачи.
+				переделайте так, чтобы ф-я просто возвращала да/нет + если нашла, то где ...
+				можно передать в DFS 5 параметров и в последние два записать эти данные.
+				*/
 			}
 			if (entry->d_type == 4) {
 				char new_dir[NAMESIZE];
@@ -46,6 +57,9 @@ int main(int argc, char** argv) {
 		fprintf(stderr, "Usage: %s directory search_of_depth name\n", argv[0]);
 		exit(EXIT_FAILURE); 
 	}
+	/*
+	fixit: deep1 -> deep
+	*/
 	int deep1 = atoi(argv[2]);
 	char directory[NAMESIZE];
 	char file[NAMESIZE];
