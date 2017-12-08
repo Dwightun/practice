@@ -1,0 +1,20 @@
+: QEMU Virtual CPU version 2.4.0
+N = 1000 
+c = 1
+
+real	0m9.456s
+user	0m9.444s
+sys	0m0.008s
+
+
+
+
+
+N = 1000 
+c = 2
+
+real	0m5.833s
+user	0m9.704s
+sys	0m0.024s
+
+
