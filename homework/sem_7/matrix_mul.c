@@ -93,6 +93,11 @@ int main(int argc, char** argv) {
 	{
 		pthread_join(th[i], NULL);
 	}
+	matrix_print(res.a, size);
+	printf("*************************\n");
+	matrix_print(res.b, size);
+	printf("*************************\n");
+	matrix_print(res.c, size);
 	free(res.a);
 	free(res.b);
 	free(res.c);
