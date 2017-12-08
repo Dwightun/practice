@@ -6,25 +6,19 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <pthread.h>
+#define N 1024
 
-/*
-fixit: т.к. на семинаре не все справились с упражнением, то он перешло в разряд домашних.
-раз так, то нужно
-1) избавиться от дублирования кода
-2) магических констант ... 1000
-3) убрать отладочный код
-*/
 
 void* mine_write(void* fd_1){
 	int fd = *((int*)fd_1);
 	char *input;
-	input=calloc(1000, sizeof(char));
+	input=calloc(N, sizeof(char));
 	while (1)
 	{
-		fgets(input,1000*sizeof(char),stdin);
+		fgets(input,N*sizeof(char),stdin);
 		if(strlen(input)<1) sleep(0.1);
 		else{
-			write(fd,input,(1000)*sizeof(char));
+			write(fd,input,(N)*sizeof(char));
 		}
 		
 	}
@@ -34,9 +28,9 @@ void* mine_read(void* fd_2){
 	int fd = *((int*)fd_2);
 	int er = 0;
 	char *output;
-	output = calloc(1000, sizeof(char));
+	output = calloc(N, sizeof(char));
 	do{
-		er = read(fd, output, 1000);
+		er = read(fd, output, N);
 		printf("ans:%s", output);
 	}
 	while (er>0);
