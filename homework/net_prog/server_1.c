@@ -29,22 +29,26 @@ int did_it_use(char* word, int* used_words){
         if(used_words[i] == tmp){
             return 1;
         }
-        while(used_words[j] != 0){
-            j++;
-        }
-        used_words[j] = tmp;
-        return 0;
+
     }
+    while(used_words[j] != 0){
+    j++;
+    }
+    used_words[j] = tmp;
+    return 0;
 }
 
 int is_word_normal(char* word){
     for(int i = 0; i < strlen(word); i++){
-        if( !('a' <= word[i] <= 'z') )
+        if( ('a' > word[i])||( word[i] > 'z') ){
+            printf("zalupa %c %d %d %d\n", word[i], 'a', 'z', word[i]);
             return 0;
+        }
     }
     return 1;
 }
 
+void peasant(int soc1, int soc2, int* used_words, char *last_l);
 
 int main(){
 
@@ -52,7 +56,6 @@ int main(){
     struct sockaddr_in addr;
     char word_buf_2[1024];
     char word_buf_1[1024];
-    int bytes_read;
     int offset = 0;
     int *used_words;
     int soc1, soc2;
@@ -84,66 +87,47 @@ int main(){
             exit(3);
         }
 
-        char *good_boi_mes = "well done";
-        char *used_word_mes = "used";
-        char *wrong_word_mes = "wrong";
-        char *first_letter_mes = "l-wrong";
-        //send(soc1, 1, 1, 0);
-        //send(soc2, 2, 1, 0);
-        int work_1 = 0;
-        int work_2 = 0;
-        char first_l;
+
+        send(soc1, "1", 1, 0);
+        send(soc2, "2", 1, 0);
         char last_l;
         last_l = 'a';
         while(1)
         {
-            work_1++;
-            work_2++;
-            while(work_1 != 0){
-                bytes_read = recv(soc1, word_buf_1, 1024, 0);
-                send(soc2, &word_buf_1[0], 2, 0);
-                if(is_word_normal(word_buf_1) == 1){
-                    if( last_l = word_buf_1[0] ){
-                        if(did_it_use(word_buf_1, used_words) == 0){
-                            last_l = word_buf_1[strlen(word_buf_1) - 1];
-                            send(soc1, good_boi_mes, sizeof(good_boi_mes) + 1, 0);
-                            send(soc2, word_buf_1, sizeof(word_buf_1) + 1, 0);
-                            work_1--;
-                        }else{
-                            send(soc1, used_word_mes, sizeof(used_word_mes) + 1, 0);
-                        }
-                    }else{
-                        send(soc1, first_letter_mes, sizeof(used_word_mes) + 1, 0);
-                    }  
-                }else{
-                    send(soc1, wrong_word_mes, sizeof(wrong_word_mes) + 1, 0);
-                }
-                qsort(used_words, N, sizeof(int), cmpfunc);
-            }
-            while(work_2 != 0){
-                bytes_read = recv(soc2, word_buf_2, 1024, 0);
-                send(soc2, &word_buf_1[0], 2, 0);
-                if(is_word_normal(word_buf_2) == 1){
-                    if( last_l = word_buf_2[0] ){
-                        if(did_it_use(word_buf_2, used_words) == 0){
-                            last_l = word_buf_2[strlen(word_buf_2 - 1)];
-                            send(soc2, good_boi_mes, sizeof(good_boi_mes) + 1, 0);
-                            send(soc1, word_buf_2, sizeof(word_buf_2) + 1, 0);
-                            work_2--;
-                        }else{
-                            send(soc2, used_word_mes, sizeof(used_word_mes) + 1, 0);
-                        }
-                        }else{
-                            send(soc2, used_word_mes, sizeof(used_word_mes) + 1, 0);
-                         }  
-                }else{
-                    send(soc2, wrong_word_mes, sizeof(wrong_word_mes) + 1, 0);
-                }
-                qsort(used_words, N, sizeof(int), cmpfunc);
-            }
+            peasant(soc1, soc2, used_words, &last_l);
+            peasant(soc2, soc1, used_words, &last_l);
         }
     }
     close(soc1);
     close(soc2);
     return 0;
+}
+
+void peasant(int soc1, int soc2, int* used_words, char* last_l){
+    char *good_boi_mes = "w";
+    char *used_word_mes = "u";
+    char *wrong_word_mes = "z";
+    char *first_letter_mes = "l";
+    int work = 1;
+    char word_buf_1[N];
+    while(work != 0){
+        recv(soc1, word_buf_1, 1024, 0);
+        if(is_word_normal(word_buf_1) == 1){
+            if( *last_l == word_buf_1[0] ){
+                if(did_it_use(word_buf_1, used_words) == 0){
+                    *last_l = word_buf_1[strlen(word_buf_1) - 1];
+                    send(soc1, good_boi_mes, 2, 0);
+                    send(soc2, word_buf_1, strlen(word_buf_1)+1, 0);
+                    work = 0;
+                }else{
+                    send(soc1, used_word_mes, 2, 0);
+                }
+            }else{
+                send(soc1, first_letter_mes, 2, 0);
+            }  
+        }else{
+            send(soc1, wrong_word_mes, 2, 0);
+        }
+        qsort(used_words, N, sizeof(int), cmpfunc);
+    }
 }
