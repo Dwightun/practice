@@ -1,0 +1,6 @@
+cup 1
+tureen 1
+spoon 1
+bowl 1
+tureen 1
+cup 1
