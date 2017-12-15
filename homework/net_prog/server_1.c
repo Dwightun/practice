@@ -41,7 +41,6 @@ int did_it_use(char* word, int* used_words){
 int is_word_normal(char* word){
     for(int i = 0; i < strlen(word); i++){
         if( ('a' > word[i])||( word[i] > 'z') ){
-            printf("zalupa %c %d %d %d\n", word[i], 'a', 'z', word[i]);
             return 0;
         }
     }
