@@ -48,36 +48,30 @@ int main() {
 		exit(2);
 	}
 	mem_alloc(&list);
-	// тут конечно можно написать проверку успешности выделения памяти, но if от ~6 сравнений мне не нравится
+	
 	iter_split(&list);
 	for (int i = 0; i < ((int)list.stirngs_count); i++) {
 		time_conv(list.words[i][0], &list.delay_time[i]);
 	}
-	int pids[list.stirngs_count];
+	pid_t pids[list.stirngs_count];
 	for (int i = 0; i < (int)list.stirngs_count; i++) {
-		pid_t pids[i];
-		sleep(1); //sest
+		
 		pids[i] = fork();
 		if (pids[i] == 0) {
-			printf("sleep\n"); //test
 			list.delay_time[i] = 1; //test
 			sleep(list.delay_time[i]);
-			printf("i = %d zero word = %s %s %s\n", i, list.words[i][0], list.words[i][1], list.words[i][2]); //test
 			int j = 0;
 			while (strlen(list.words[i][j]) != 0) {
 				j++;
 			}
 			list.words[i][j] = NULL;
-			printf("goose == %s %s\n", list.words[i][2], list.words[i][3]); //test
-			execvp(list.words[i][1], list.words[i] + 1); // здесь не понятно как подаются аргументы
+			execvp(list.words[i][1], list.words[i] + 1); 
 			exit(0);
 		}
 	}
-	sleep(1); //test
 	for (int i = 0; i < list.stirngs_count; i++) {
 		waitpid(pids[i], NULL, 0);
 	}
-	sleep(2); //test
 	fclose(command_list);
 	mem_free(&list);
 	return 0;
