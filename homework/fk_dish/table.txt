@@ -1,7 +1,10 @@
-cup
-tureen
-spoon
-bowl
-tureen
-cup
+a
+a
+c
+d
+b
+a
+b
+b
+d
 ALL

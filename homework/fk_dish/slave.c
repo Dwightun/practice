@@ -148,8 +148,7 @@ void* wiping(void* dummy) {
 	return NULL;
 }
 
-int main()
-{
+int main() {
 	char pathname[] = "dummy.txt";
 	key_t key = ftok(pathname, 0);
 	if ((semid = semget(key, 2, 0666 | IPC_CREAT)) < 0) {
