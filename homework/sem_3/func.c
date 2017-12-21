@@ -17,8 +17,6 @@ void split(char* string, char* delimiter, char** tokens, int* tokens_count) {
 		strcat(string_copy, delimiter);
 		for (int iterator = 0; iterator < (int)strlen(string) + 1; iterator++){
 			int x = strlen(string_copy);
-			// в целом, конечно, ваш подход с strstr выглядит жестоко ... man про strtok вы точно не смотрели)
-			// re: я думал нужно реализовать именно алгоритм поиска лексем, иначе задача получается типа : 3 * x = 3 solve for x
 			str_out = strstr(string_copy, delimiter);
 			if (str_out != NULL && tokens[token_counter] != NULL){
 				string_word = str_out;
@@ -39,17 +37,15 @@ void time_conv(char* string_of_data, int* delay_time) {
 	int data_constant = 0;
 	time_delimiter = (char*)calloc(smallN, sizeof(char));
 	time_delimiter[0] = '/';
-	data_array = (char**)calloc(TIME_COUNT_CONSTANT, sizeof(char*)); //freed
+	data_array = (char**)calloc(TIME_COUNT_CONSTANT, sizeof(char*));  
 	if ( string_of_data == NULL || delay_time == NULL){
 		printf("NULL POINTER");
 		return;
 	}
-	for (size_t i = 0; i < TIME_COUNT_CONSTANT; i++)
-	{
-		data_array[i] = (char*)calloc(TIME_UNIT_SIZE_CONSTANT, sizeof(char)); //freed
+	for (size_t i = 0; i < TIME_COUNT_CONSTANT; i++){
+		data_array[i] = (char*)calloc(TIME_UNIT_SIZE_CONSTANT, sizeof(char));  
 	}
 	split(string_of_data, time_delimiter, data_array, &data_constant);
-	// тут можно было бы это сделать нормально, но зачем ¯\_(ツ)_/¯
 	*delay_time = atoi(data_array[0]) * 2629743 + atoi(data_array[1]) * 86400 + (atoi(data_array[2]) - 1970) * 31556926 + atoi(data_array[3]) * 3600 + atoi(data_array[4]) * 60 + atoi(data_array[5])- (int)time(NULL);
 	for (size_t iterator = 0; iterator < TIME_COUNT_CONSTANT; iterator++){
 		free(data_array[iterator]);
@@ -60,29 +56,29 @@ void time_conv(char* string_of_data, int* delay_time) {
 
 void use_with_delay(char** commands, int* delay, int number_of_command) {
 	printf("asdasd\n");
-	//sleep(*delay);
-	//execvp(commands[0], commands + 1);
+	sleep(*delay);
+	execvp(commands[0], commands + 1);
 }
 
 int mem_alloc(char* text_of_command_list, char** string_of_commands, char*** words_of_commands, char* string_delimiter, char *word_delimiter, int** delay_time, int** count_of_word_of_string_of_commands, int* count_of_strings_of_commands, int size_of_input, int size_of_command_list) {
 
-	text_of_command_list = (char*)calloc(size_of_command_list, sizeof(char)); //freed
-	string_of_commands = (char**)calloc(size_of_input, sizeof(char*)); //freed
+	text_of_command_list = (char*)calloc(size_of_command_list, sizeof(char));  
+	string_of_commands = (char**)calloc(size_of_input, sizeof(char*));  
 	words_of_commands = (char***)calloc(N, sizeof(char**)); //unsure about it
-	delay_time = (int**)calloc(count_of_strings_of_commands, sizeof(int*)); //freed
+	delay_time = (int**)calloc(count_of_strings_of_commands, sizeof(int*));  
 	count_of_word_of_string_of_commands = (int**)calloc(count_of_strings_of_commands, sizeof(int*));
 	for (size_t iterator = 0; iterator < (size_t)count_of_strings_of_commands; iterator++) {
-		string_of_commands[iterator] = (char*)calloc(N, sizeof(char)); //freed
-		delay_time[iterator] = (int*)calloc(N, sizeof(int)); //freed
-		words_of_commands[iterator] = (char**)calloc(N, sizeof(char*)); //freed
-		count_of_word_of_string_of_commands[iterator] = (int*)calloc(N, sizeof(int)); //freed
+		string_of_commands[iterator] = (char*)calloc(N, sizeof(char));  
+		delay_time[iterator] = (int*)calloc(N, sizeof(int));  
+		words_of_commands[iterator] = (char**)calloc(N, sizeof(char*));  
+		count_of_word_of_string_of_commands[iterator] = (int*)calloc(N, sizeof(int));  
 		for (size_t i = 0; i < N; i++) {
-			words_of_commands[iterator][i] = (char*)calloc(N, sizeof(char)); //freed
+			words_of_commands[iterator][i] = (char*)calloc(N, sizeof(char));  
 		}
 	}
-	string_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
+	string_delimiter = (char*)calloc(smallN, sizeof(char));  
 	string_delimiter[0] = '\n';
-	word_delimiter = (char*)calloc(smallN, sizeof(char)); //freed
+	word_delimiter = (char*)calloc(smallN, sizeof(char));  
 	word_delimiter[0] = ' ';
 	if (text_of_command_list == NULL || string_of_commands == NULL || words_of_commands == NULL || delay_time == NULL || count_of_word_of_string_of_commands == NULL || string_delimiter == NULL || word_delimiter == NULL) return 0;
 	return 1;

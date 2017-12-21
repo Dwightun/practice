@@ -48,13 +48,15 @@ int main(int argc, char** argv) {
 			perror("wrong amount of threads");
 			exit(-3);
 		}
-	}else {
+	}
+	else {
 		count_of_thread = sysconf(_SC_NPROCESSORS_ONLN); // wow amazing func, such func
 		if (count_of_thread < 1)
 		{
 			perror("wrong amount of arguments");
 			count_of_thread = 2; // cause sys did give the count let's define it as 2
-		}else{
+		}
+		else {
 			printf("count_of_threads = %d \n", count_of_thread);
 		}
 	}
@@ -67,11 +69,11 @@ int main(int argc, char** argv) {
 		exit(-3);
 	}
 	pthread_t *th = (pthread_t*)malloc(sizeof(pthread_t) * count_of_thread); //calloc +
-	if (th == NULL){
+	if (th == NULL) {
 		perror("unable to allocate memory for thread structure");
-			exit(-3);
+		exit(-3);
 	}
-	for (size_t i = 0; i < count_of_thread; i++){
+	for (size_t i = 0; i < count_of_thread; i++) {
 		order_t* order = (order_t*)malloc(sizeof(matrix_t)); //calloc *n
 		if (order == NULL)
 		{
@@ -127,7 +129,7 @@ float* generate_empty_matrix(int size) {
 	float* matrix = (float*)calloc(size * size, sizeof(float));
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
-			*(matrix + i*size + j) = 0;
+			*(matrix + i * size + j) = 0;
 		}
 	}
 	return matrix;
@@ -140,7 +142,7 @@ float* generate_and_fill_matrix(int size) {
 	}
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
-			*(matrix + i*size + j) = rand()/100000000.0; //didn't find a good way to generate random numbers for each single execution of programm
+			*(matrix + i * size + j) = rand() / 100000000.0; //didn't find a good way to generate random numbers for each single execution of programm
 		}
 	}
 	return matrix;
@@ -149,14 +151,14 @@ float* generate_and_fill_matrix(int size) {
 float dot_prod(matrix_t *matrix, int i, int j) {
 	int size = matrix->size;
 	int result = 0;
-	for (int k = 0; k < size; k++){
+	for (int k = 0; k < size; k++) {
 		result += *(matrix->a + i * size + k) * *(matrix->b + k * size + j);
 	}
 	return result;
 }
 
 
-void matrix_print(float *mat, int size){
+void matrix_print(float *mat, int size) {
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -165,4 +167,4 @@ void matrix_print(float *mat, int size){
 		}
 		printf("\n");
 	}
-}	
+}
