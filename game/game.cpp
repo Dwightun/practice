@@ -1,4 +1,3 @@
-
 #include<SFML/Graphics.hpp>
 #include<iostream>
 #include<math.h>
@@ -187,12 +186,13 @@ bool Bird::is_collision(std::vector<Tree>& trees)
 			return 0;
 		}
 	}
+	return 0;// hui 4715
 }
 
 bool Tree::check()
 {
 	auto x_coord = object.getPosition().x + border;
-	if (x_coord < 0 || x_coord > SIZE_X + border)
+	if (x_coord < 0 || x_coord > SIZE_X + 2 * border)
 		return true;
 	return false;
 }
@@ -215,14 +215,20 @@ void move_trees(std::vector<Tree>& trees)
 
 void delete_trees(std::vector<Tree>& trees)
 {
+	int iter = 0;
+
 	if (trees.empty())
 		return;
-	for (auto& it : trees)
+
+	while (iter < trees.size())
 	{
-		if (it.check())
+		if (trees[iter].check())
 		{
+			trees[iter] = trees.back();
 			trees.pop_back();
 		}
+		else
+			iter++;
 	}
 }
 
@@ -230,8 +236,6 @@ float myrandom(float min, float max)
 {
 	return (float)(rand()) / RAND_MAX * (max - min) + min;
 }
-
-
 
 void WindowInitialize(sf::RenderWindow& window) // window set
 {
@@ -252,16 +256,17 @@ bool MouseCheck(sf::Sprite object, sf::Texture texture, sf::RenderWindow& window
 {
 	return ((sf::Mouse::getPosition().x - window.getPosition().x - 7 > object.getPosition().x - object.getOrigin().x) &&
 		(sf::Mouse::getPosition().x - window.getPosition().x - 7 < object.getPosition().x - object.getOrigin().x + texture.getSize().x * object.getScale().x) &&
-		(sf::Mouse::getPosition().y - window.getPosition().y - 28 < object.getPosition().y - object.getOrigin().y + texture.getSize().y * object.getScale().y) &&
-		(sf::Mouse::getPosition().y - window.getPosition().y - 28 > object.getPosition().y - object.getOrigin().y));
-
+		(sf::Mouse::getPosition().y - window.getPosition().y - 29 < object.getPosition().y - object.getOrigin().y + texture.getSize().y * object.getScale().y) &&
+		(sf::Mouse::getPosition().y - window.getPosition().y - 29 > object.getPosition().y - object.getOrigin().y));
 }
 
 void CreateTextButton(sf::Text& text, sf::Sprite object, sf::Texture texture, std::string s) //Text pos
 {
 	text.setString(s);
-	text.setOrigin(text.getLocalBounds().width / 2, text.getLocalBounds().height - text.getLocalBounds().left - 12);
-	text.setPosition(object.getPosition().x + texture.getSize().x / 2, object.getPosition().y + texture.getSize().y / 2);
+	text.setOrigin(text.getLocalBounds().width / 2,
+		text.getLocalBounds().height - text.getLocalBounds().left - 12);
+	text.setPosition(object.getPosition().x + texture.getSize().x / 2,
+		object.getPosition().y + texture.getSize().y / 2);
 }
 
 void DrawMenu(sf::RenderWindow& window)
@@ -275,7 +280,8 @@ void DrawMenu(sf::RenderWindow& window)
 	background.setTexture(mapTexture);
 	background.setOrigin(mapTexture.getSize().x / 2, mapTexture.getSize().y / 2);
 	background.setPosition(window.getSize().x / 2, window.getSize().y / 2);
-	background.setScale(window.getSize().y * 1.0 / mapTexture.getSize().y, window.getSize().y * 1.0 / mapTexture.getSize().y);
+	background.setScale(window.getSize().y * 1.0 / mapTexture.getSize().y,
+		window.getSize().y * 1.0 / mapTexture.getSize().y);
 
 	sf::Texture press_texture; //  swap if pointer
 	press_texture.loadFromFile("button_press.png");
@@ -284,15 +290,17 @@ void DrawMenu(sf::RenderWindow& window)
 	texture.loadFromFile("button.png");
 
 	sf::Sprite but_play(texture); // PLAY
-	but_play.setPosition(window.getSize().x / 2 - texture.getSize().x / 2, window.getSize().y / 2 - 3 * texture.getSize().y);
+	but_play.setPosition(window.getSize().x / 2 - texture.getSize().x / 2,
+		window.getSize().y / 2 - 3 * texture.getSize().y);
 
 	sf::Sprite but_exit(texture); // EXIT
-	but_exit.setPosition(window.getSize().x / 2 - texture.getSize().x / 2, window.getSize().y / 2 - texture.getSize().y);
+	but_exit.setPosition(window.getSize().x / 2 - texture.getSize().x / 2,
+		window.getSize().y / 2 - texture.getSize().y);
 
 	sf::Font font;// font
 	font.loadFromFile("11774.ttf");
 
-	sf::Text text_play("", font, 2 * texture.getSize().y / 3 ); // Create "PLAY"
+	sf::Text text_play("", font, 2 * texture.getSize().y / 3); // Create "PLAY"
 	text_play.setColor(sf::Color::White);
 	CreateTextButton(text_play, but_play, texture, "PLAY");
 
@@ -363,7 +371,6 @@ void DrawMenu(sf::RenderWindow& window)
 
 }
 
-
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(SIZE_X, SIZE_Y), "My window");
@@ -392,10 +399,10 @@ int main()
 	{
 		auto scale_up = myrandom(0.5, 1.5);
 		auto scale_down = (900 - 100 - scale_up * 400) / 400;
-		auto tree_up = new Tree(sf::Vector2f(-0.05, 0), texture_tree_up, sf::Vector2f(1, scale_up),
-			sf::Vector2f(SIZE_X, 0), sf::Vector2f(54.5, 0));
-		auto tree_down = new Tree(sf::Vector2f(-0.05, 0), texture_tree_down, sf::Vector2f(1, scale_down),
-			sf::Vector2f(SIZE_X, 900), sf::Vector2f(54.5, 400));
+		auto tree_up = new Tree(sf::Vector2f(-0.1, 0), texture_tree_up, sf::Vector2f(1, scale_up),
+			sf::Vector2f(SIZE_X + border, 0), sf::Vector2f(54.5, 0));
+		auto tree_down = new Tree(sf::Vector2f(-0.1, 0), texture_tree_down, sf::Vector2f(1, scale_down),
+			sf::Vector2f(SIZE_X + border, 900), sf::Vector2f(54.5, 400));
 
 		if (trees.empty() || trees.back().get_object().getPosition().x < 700)
 		{
@@ -412,7 +419,14 @@ int main()
 		time = clock.getElapsedTime();
 		bird->apply_force(time);
 		move_trees(trees);
-		bird->is_collision(trees);
+
+		if (bird->is_collision(trees))
+		{
+			DrawMenu(window);
+			main();
+			clock.restart();
+		}
+
 		while (window.pollEvent(event))
 		{
 			switch (event.type) {
@@ -430,7 +444,9 @@ int main()
 				if (event.key.code == sf::Keyboard::M)
 				{
 					DrawMenu(window);
+					clock.restart();
 				}
+				break;
 			default:
 				break;
 			}
@@ -442,7 +458,37 @@ int main()
 	return 0;
 }
 
+/* differential evolution
+
+float Bird::distance(const std::vector<Tree>& trees)
+{}
+
+bool compare(const Bird& bird_1, const Bird& bird_2)
+{
+return bird_1.distance() > bird_2.distance;
+}
 
 
+std::vector<Bird> generation()
+{
+// Генерируем новую популяцию;
+};
 
+std::vector<Bird> otbor(const std::vector<Bird>& birds)
+{
+// Отбираем лучшие варианты;
+std::vector<Bird> best_birds;
+// ...
+}
 
+Bird skreschevanie(three birds)
+{
+// Разность от двух и движемся в направлении третьей;
+}
+
+Bird mutation(two birds)
+{
+// Берем две птицы и получаем новую
+}
+
+Нейрочасть */
