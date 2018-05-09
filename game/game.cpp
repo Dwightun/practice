@@ -252,12 +252,18 @@ void ExitGame(sf::RenderWindow& window) //clear
 	window.close();
 }
 
+bool ResetGame(sf::RenderWindow& window)
+{
+	return 1;
+}
+
 bool MouseCheck(sf::Sprite object, sf::Texture texture, sf::RenderWindow& window) // Pointer pos check
 {
-	return ((sf::Mouse::getPosition().x - window.getPosition().x - 7 > object.getPosition().x - object.getOrigin().x) &&
-		(sf::Mouse::getPosition().x - window.getPosition().x - 7 < object.getPosition().x - object.getOrigin().x + texture.getSize().x * object.getScale().x) &&
-		(sf::Mouse::getPosition().y - window.getPosition().y - 29 < object.getPosition().y - object.getOrigin().y + texture.getSize().y * object.getScale().y) &&
-		(sf::Mouse::getPosition().y - window.getPosition().y - 29 > object.getPosition().y - object.getOrigin().y));
+	return ((sf::Mouse::getPosition().x - window.getPosition().x > object.getPosition().x) &&
+		(sf::Mouse::getPosition().x - window.getPosition().x < object.getPosition().x + texture.getSize().x + 7) &&
+		(sf::Mouse::getPosition().y - window.getPosition().y < object.getPosition().y + texture.getSize().y + 27) &&
+		(sf::Mouse::getPosition().y - window.getPosition().y > object.getPosition().y + 27));
+	// did some but nothing
 }
 
 void CreateTextButton(sf::Text& text, sf::Sprite object, sf::Texture texture, std::string s) //Text pos
@@ -269,7 +275,7 @@ void CreateTextButton(sf::Text& text, sf::Sprite object, sf::Texture texture, st
 		object.getPosition().y + texture.getSize().y / 2);
 }
 
-void DrawMenu(sf::RenderWindow& window)
+int DrawMenu(sf::RenderWindow& window)
 {
 
 	sf::Texture mapTexture; // Background
@@ -291,11 +297,15 @@ void DrawMenu(sf::RenderWindow& window)
 
 	sf::Sprite but_play(texture); // PLAY
 	but_play.setPosition(window.getSize().x / 2 - texture.getSize().x / 2,
-		window.getSize().y / 2 - 3 * texture.getSize().y);
+		window.getSize().y / 2 - 150);
 
 	sf::Sprite but_exit(texture); // EXIT
 	but_exit.setPosition(window.getSize().x / 2 - texture.getSize().x / 2,
-		window.getSize().y / 2 - texture.getSize().y);
+		window.getSize().y / 2 + 30);
+
+	sf::Sprite but_restart(texture); // RESTART
+	but_restart.setPosition(window.getSize().x / 2 - texture.getSize().x / 2,
+		window.getSize().y / 2 - 60);
 
 	sf::Font font;// font
 	font.loadFromFile("11774.ttf");
@@ -308,6 +318,10 @@ void DrawMenu(sf::RenderWindow& window)
 	text_exit.setColor(sf::Color::White);
 	CreateTextButton(text_exit, but_exit, texture, "EXIT");
 
+	sf::Text text_restart("", font, 2 * texture.getSize().y / 3); // Create "RESTART"
+	text_restart.setColor(sf::Color::White);
+	CreateTextButton(text_restart, but_restart, texture, "RESTART");
+
 	while (window.isOpen())
 	{
 
@@ -317,10 +331,13 @@ void DrawMenu(sf::RenderWindow& window)
 		window.draw(background);
 		window.draw(but_exit);
 		window.draw(but_play);
+		window.draw(but_restart);
 		window.draw(text_play);
 		window.draw(text_exit);
+		window.draw(text_restart);
 		but_exit.setTexture(texture);
 		but_play.setTexture(texture);
+		but_restart.setTexture(texture);
 
 		if (MouseCheck(but_exit, press_texture, window)) // Mouse pos check
 		{
@@ -333,18 +350,30 @@ void DrawMenu(sf::RenderWindow& window)
 		}
 
 
+		if (MouseCheck(but_restart, press_texture, window))
+		{
+			but_restart.setTexture(press_texture);
+		}
+
+
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // LMB check
 		{
 			if (MouseCheck(but_play, press_texture, window))
 			{
 				PlayGame();
-				break;
+				return -1; // magic
 			}
 
 			if (MouseCheck(but_exit, press_texture, window))
 			{
 				ExitGame(window);
 				break;
+			}
+
+			if (MouseCheck(but_restart, press_texture, window))
+			{
+				ResetGame(window);
+				return 1;
 			}
 
 		}
@@ -371,7 +400,7 @@ void DrawMenu(sf::RenderWindow& window)
 
 }
 
-int main()
+bool StartGame() // just reset main() to this func
 {
 	sf::RenderWindow window(sf::VideoMode(SIZE_X, SIZE_Y), "My window");
 	sf::Texture texture_bird;
@@ -422,9 +451,7 @@ int main()
 
 		if (bird->is_collision(trees))
 		{
-			DrawMenu(window);
-			main();
-			clock.restart();
+			return DrawMenu(window);
 		}
 
 		while (window.pollEvent(event))
@@ -455,6 +482,20 @@ int main()
 		window.setView(view2);
 		window.display();
 	}
+	return 0;
+}
+
+void GameRunning() // if startgame==1 restart from very beginning, so function will kill old window 
+{
+	if (StartGame() > 0)
+	{
+		GameRunning();
+	}
+}
+
+int main()
+{
+	GameRunning();
 	return 0;
 }
 
