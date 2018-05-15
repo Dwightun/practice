@@ -7,7 +7,7 @@
 
 #define SIZE_X 1000
 #define SIZE_Y 1000
-#define G      1000
+#define G      2000
 #define border 50
 #define speed  0.01
 #define MAX_VEL 300
@@ -71,6 +71,8 @@ public:
 		accel = 0;
 	};
 	~Bird() {};
+
+	bool flag;
 
 	void fly();
 	void apply_force(sf::Time& time);
@@ -158,7 +160,7 @@ void Bird::apply_force(sf::Time& time)
 
 void Bird::fly()
 {
-	accel = -30000;
+	accel = -1500;
 	//object.move(0, velocity.y * 3);
 }
 
@@ -488,15 +490,18 @@ bool StartGame() // just reset main() to this func
 				break;
 			case sf::Event::KeyPressed:
 
-				if (event.key.code == sf::Keyboard::Space)
+				if (event.key.code == sf::Keyboard::Space && !bird->flag)
 				{
+					bird->flag = 1;
 					clock.restart();
 					bird->fly();
 				}
+
 				break;
 			case sf::Event::KeyReleased:
 				if (event.key.code == sf::Keyboard::M)
 				{
+					if (event.key.code == sf::Keyboard::Space) bird->flag = 0;
 					DrawMenu(window);
 					clock.restart();
 				}
