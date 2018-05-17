@@ -11,7 +11,6 @@ const float firingRate = 0.3f;
 const float bulletVelocity = 1500.0f;
 const float collisionRadius = 64.0f;
 
-/// вы снова присылаете мне списанную работу. не засчитано
 
 bool isSeekToNull(double lhs, double rhs)// to prevent 1/(0+) devision
 {
