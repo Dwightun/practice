@@ -7,10 +7,11 @@
 
 #define SIZE_X 1000
 #define SIZE_Y 1000
-#define G      2000
+#define G      2000/1.5
 #define border 50
-#define speed  0.01
+#define speed  0.01*1.5
 #define MAX_VEL 300
+#define BIRD_ACCEL -1500/1.5
 
 #define real_size_x 109
 #define real_size_y 400
@@ -160,7 +161,7 @@ void Bird::apply_force(sf::Time& time)
 
 void Bird::fly()
 {
-	accel = -1500;
+	accel = BIRD_ACCEL;
 	//object.move(0, velocity.y * 3);
 }
 
@@ -490,7 +491,7 @@ bool StartGame() // just reset main() to this func
 				break;
 			case sf::Event::KeyPressed:
 
-				if (event.key.code == sf::Keyboard::Space && !bird->flag)
+				if (event.key.code == sf::Keyboard::Space && !bird->flag && (bird->get_velocity().y)>-MAX_VEL)
 				{
 					bird->flag = 1;
 					clock.restart();
@@ -499,9 +500,10 @@ bool StartGame() // just reset main() to this func
 
 				break;
 			case sf::Event::KeyReleased:
+				if (event.key.code == sf::Keyboard::Space) bird->flag = 0;
 				if (event.key.code == sf::Keyboard::M)
 				{
-					if (event.key.code == sf::Keyboard::Space) bird->flag = 0;
+					
 					DrawMenu(window);
 					clock.restart();
 				}
